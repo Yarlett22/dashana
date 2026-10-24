@@ -69,7 +69,8 @@ a { color: var(--morado); }
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
   gap: 10px; padding-top: 12px; padding-bottom: 12px;
 }
-.logo { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo__img { height: 68px; width: auto; }
 .logo__nombre { font-family: "Dancing Script", cursive; font-size: 40px; line-height: 1; color: var(--morado); }
 .logo__nombre--claro { color: #fff; }
 .logo__sub { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--verde); }
@@ -79,6 +80,7 @@ a { color: var(--morado); }
 @media (max-width: 760px) {
   .nav a:not(.boton) { display: none; }
   .logo__nombre { font-size: 34px; }
+  .logo__img { height: 56px; }
 }
 
 /* Hero */
