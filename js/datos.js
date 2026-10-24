@@ -17,20 +17,21 @@ window.DATOS = {
   //   fotosPorColor: { "Amarillo pastel": "img/figuras/angelito-alas-amarillo.webp",
   //                    "Celeste": "img/figuras/angelito-alas-celeste.webp" }
   // Si un color no tiene foto, se muestra la foto principal.
+  // repintar: true -> la página pinta automáticamente la foto en el color elegido.
   figuras: [
-    { nombre: "Angelito con alas", foto: "img/figuras/angelito-alas.webp",
+    { nombre: "Angelito con alas", foto: "img/figuras/angelito-alas.webp", repintar: true,
       descripcion: "Un angelito que descansa entre sus alas. Ideal para bautizos y comuniones." },
-    { nombre: "Angelito en oración", foto: "img/figuras/angelito-rezando.webp",
+    { nombre: "Angelito en oración", foto: "img/figuras/angelito-rezando.webp", repintar: true,
       descripcion: "Tierno y delicado, un recuerdo lleno de paz." },
-    { nombre: "Angelita con flores", foto: "img/figuras/angelita-flores.webp",
+    { nombre: "Angelita con flores", foto: "img/figuras/angelita-flores.webp", repintar: true,
       descripcion: "Con su coronita de flores, perfecta para primeras comuniones." },
-    { nombre: "Conejita", foto: "img/figuras/conejita.webp",
+    { nombre: "Conejita", foto: "img/figuras/conejita.webp", repintar: true,
       descripcion: "Con su lacito y vestido, se roba todas las miradas." },
     { nombre: "Elefantita", foto: "img/figuras/elefantita.webp",
       descripcion: "Dulce y brillante, la favorita de los baby showers." },
     { nombre: "Flor con corazón", foto: "img/figuras/flor-corazon.webp",
       descripcion: "Un detalle lleno de amor para mamá, bodas o aniversarios." },
-    { nombre: "Osito en tarro de miel", foto: "img/figuras/osito-miel.webp",
+    { nombre: "Osito en tarro de miel", foto: "img/figuras/osito-miel.webp", repintar: true,
       descripcion: "Un osito asomándose de su tarro de miel. Imposible no sonreír." }
   ],
 
