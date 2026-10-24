@@ -167,7 +167,7 @@ a { color: var(--morado); }
 .visor__3d:active { cursor: grabbing; }
 .visor__3d canvas { display: block; width: 100% !important; height: 100% !important; }
 .visor__foto { position: absolute; inset: 0; margin: 0; background: var(--fondo-foto); }
-.visor__foto img { width: 100%; height: 100%; object-fit: contain; }
+.visor__foto canvas { width: 100%; height: 100%; object-fit: contain; display: block; }
 .visor__foto figcaption {
   position: absolute; left: 12px; right: 12px; bottom: 12px;
   background: rgba(255, 255, 255, .92); border-radius: 12px; padding: 8px 12px;
