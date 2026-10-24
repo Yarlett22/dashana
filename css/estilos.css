@@ -167,7 +167,14 @@ a { color: var(--morado); }
 .visor__3d:active { cursor: grabbing; }
 .visor__3d canvas { display: block; width: 100% !important; height: 100% !important; }
 .visor__foto { position: absolute; inset: 0; margin: 0; background: var(--fondo-foto); }
-.visor__foto img { width: 100%; height: 100%; object-fit: contain; }
+.visor__foto { touch-action: pan-y; }
+.visor__foto img { width: 100%; height: 100%; object-fit: contain; transition: transform .25s ease-out, filter .25s; will-change: transform;
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at center, #000 84%, transparent 100%); mask-image: radial-gradient(ellipse 50% 50% at center, #000 84%, transparent 100%); }
+.visor__foto img.balanceo { animation: balanceo 6s ease-in-out infinite; }
+@keyframes balanceo {
+  0%, 100% { transform: perspective(800px) rotateY(-7deg) rotateX(2deg); }
+  50% { transform: perspective(800px) rotateY(7deg) rotateX(-2deg); }
+}
 .visor__foto figcaption {
   position: absolute; left: 12px; right: 12px; bottom: 12px;
   background: rgba(255, 255, 255, .92); border-radius: 12px; padding: 8px 12px;

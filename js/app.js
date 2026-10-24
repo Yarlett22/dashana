@@ -221,7 +221,7 @@
       }
       imgV.alt = "Jabón " + figura.nombre + " en color " + nombreColor.toLowerCase();
       document.getElementById("visor-pie").textContent = pie;
-      ayuda.textContent = figura.nombre;
+      ayuda.textContent = figura.nombre + " · Mueve el dedo o el mouse sobre la foto";
     } else {
       ayuda.textContent = "Arrastra para girar el jabón y verlo por todos lados.";
       window.dispatchEvent(new CustomEvent("dashana:jabon", {
@@ -237,4 +237,22 @@
     window.__dashanaJabon = { forma: estado.forma.slice(7), color: esCarbon ? "#2E2E2E" : color.hex, tipo: estado.tipo };
   }
   actualizar();
+  // ---- Efecto de inclinación 3D en las fotos de figuras ----
+  (function () {
+    var caja = document.getElementById("visor-foto"), foto = document.getElementById("visor-img");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    function inclinar(e) {
+      var r = caja.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      foto.classList.remove("balanceo");
+      foto.style.transform = "perspective(800px) rotateY(" + (x * 26).toFixed(1) + "deg) rotateX(" + (-y * 22).toFixed(1) + "deg) scale(1.04)";
+      foto.style.filter = "drop-shadow(" + (-x * 18).toFixed(0) + "px " + (12 - y * 10).toFixed(0) + "px 14px rgba(78,29,92,.18))";
+    }
+    function soltar() { foto.style.transform = ""; foto.style.filter = ""; foto.classList.add("balanceo"); }
+    caja.addEventListener("pointermove", inclinar);
+    caja.addEventListener("pointerdown", inclinar);
+    caja.addEventListener("pointerleave", soltar);
+    caja.addEventListener("pointerup", function (e) { if (e.pointerType !== "mouse") soltar(); });
+    foto.classList.add("balanceo");
+  })();
 })();
