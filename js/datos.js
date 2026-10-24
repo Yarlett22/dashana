@@ -12,6 +12,11 @@ window.DATOS = {
   whatsapp: "51965231034",
 
   // ---------- Jabones con figuras (Colección figuras) ----------
+  // fotosPorColor (opcional): foto real de la figura en cada color del configurador.
+  // El nombre del color debe ser igual al de la lista "colores" (más abajo). Ejemplo:
+  //   fotosPorColor: { "Amarillo pastel": "img/figuras/angelito-alas-amarillo.webp",
+  //                    "Celeste": "img/figuras/angelito-alas-celeste.webp" }
+  // Si un color no tiene foto, se muestra la foto principal.
   figuras: [
     { nombre: "Angelito con alas", foto: "img/figuras/angelito-alas.webp",
       descripcion: "Un angelito que descansa entre sus alas. Ideal para bautizos y comuniones." },

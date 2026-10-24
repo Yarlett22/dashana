@@ -111,69 +111,6 @@
     actualizar();
   });
 
-  // ---- Repintar la foto de una figura con el color elegido (conserva sombras y relieve) ----
-  var cacheFotos = {};
-  function hexRgb(h) { var n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
-  function rgbHsl(r, g, b) {
-    var mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2, h = 0, s = 0, d = mx - mn;
-    if (d) {
-      s = l > 0.5 ? d / (2 - mx - mn) : d / (mx + mn);
-      h = mx === r ? (g - b) / d + (g < b ? 6 : 0) : mx === g ? (b - r) / d + 2 : (r - g) / d + 4;
-      h /= 6;
-    }
-    return [h, s, l];
-  }
-  function hue2(p, q, t) { if (t < 0) t += 1; if (t > 1) t -= 1; return t < 1 / 6 ? p + (q - p) * 6 * t : t < 1 / 2 ? q : t < 2 / 3 ? p + (q - p) * (2 / 3 - t) * 6 : p; }
-  function hslRgb(h, s, l) {
-    if (!s) return [l, l, l];
-    var q = l < 0.5 ? l * (1 + s) : l + s - l * s, p = 2 * l - q;
-    return [hue2(p, q, h + 1 / 3), hue2(p, q, h), hue2(p, q, h - 1 / 3)];
-  }
-  function prepararFoto(src, listo) {
-    if (cacheFotos[src]) { if (cacheFotos[src].datos) listo(cacheFotos[src]); else cacheFotos[src].espera.push(listo); return; }
-    var c = cacheFotos[src] = { espera: [listo] };
-    var img = new Image();
-    img.onload = function () {
-      var w = img.naturalWidth, h = img.naturalHeight, cv = document.createElement("canvas");
-      cv.width = w; cv.height = h;
-      var ctx = cv.getContext("2d"); ctx.drawImage(img, 0, 0);
-      var px = ctx.getImageData(0, 0, w, h).data, n = w * h;
-      var mascara = new Float32Array(n), luz = new Float32Array(n), suma = 0, peso = 0;
-      for (var i = 0; i < n; i++) {
-        var r = px[i * 4] / 255, g = px[i * 4 + 1] / 255, b = px[i * 4 + 2] / 255;
-        var croma = Math.max(r, g, b) - Math.min(r, g, b);
-        var m = Math.min(1, Math.max(0, (croma - 0.035) / 0.06));
-        var l = rgbHsl(r, g, b)[2];
-        mascara[i] = m; luz[i] = l; suma += l * m; peso += m;
-      }
-      c.w = w; c.h = h; c.datos = px; c.mascara = mascara; c.luz = luz; c.luzMedia = peso ? suma / peso : 0.7;
-      c.espera.forEach(function (f) { f(c); }); c.espera = [];
-    };
-    img.src = src;
-  }
-  var pedidoColor = 0;
-  function recolorear(src, hex) {
-    var turno = ++pedidoColor;
-    prepararFoto(src, function (c) {
-      if (turno !== pedidoColor) return;
-      var cv = document.getElementById("visor-canvas");
-      cv.width = c.w; cv.height = c.h;
-      var ctx = cv.getContext("2d"), salida = ctx.createImageData(c.w, c.h), o = salida.data, px = c.datos;
-      var t = hexRgb(hex), th = rgbHsl(t[0] / 255, t[1] / 255, t[2] / 255);
-      for (var i = 0, n = c.w * c.h; i < n; i++) {
-        var m = c.mascara[i], k = i * 4;
-        if (m <= 0) { o[k] = px[k]; o[k + 1] = px[k + 1]; o[k + 2] = px[k + 2]; o[k + 3] = 255; continue; }
-        var l = Math.min(0.98, Math.max(0.02, th[2] + (c.luz[i] - c.luzMedia) * 1.1));
-        var nuevo = hslRgb(th[0], th[1], l);
-        o[k] = px[k] * (1 - m) + nuevo[0] * 255 * m;
-        o[k + 1] = px[k + 1] * (1 - m) + nuevo[1] * 255 * m;
-        o[k + 2] = px[k + 2] * (1 - m) + nuevo[2] * 255 * m;
-        o[k + 3] = 255;
-      }
-      ctx.putImageData(salida, 0, 0);
-    });
-  }
-
   function actualizar() {
     var esFigura = estado.forma.indexOf("figura:") === 0;
     var nombreForma, figura;
@@ -204,9 +141,13 @@
     visor3d.hidden = esFigura;
     visorFoto.hidden = !esFigura;
     if (esFigura) {
-      recolorear(figura.foto, esCarbon ? "#2E2E2E" : color.hex);
-      document.getElementById("visor-canvas").setAttribute("aria-label", "Jabón " + figura.nombre + " en color " + nombreColor.toLowerCase());
-      document.getElementById("visor-pie").textContent = "Vista aproximada en color " + nombreColor.toLowerCase() + ".";
+      var fotoColor = !esCarbon && figura.fotosPorColor && figura.fotosPorColor[color.nombre];
+      var imgV = document.getElementById("visor-img");
+      imgV.src = fotoColor || figura.foto;
+      imgV.alt = "Jabón " + figura.nombre + (fotoColor ? " en color " + nombreColor.toLowerCase() : "");
+      document.getElementById("visor-pie").textContent = fotoColor
+        ? "Así se ve en color " + nombreColor.toLowerCase() + "."
+        : "Foto referencial. También lo hacemos en color " + nombreColor.toLowerCase() + ".";
       ayuda.textContent = figura.nombre;
     } else {
       ayuda.textContent = "Arrastra para girar el jabón y verlo por todos lados.";
