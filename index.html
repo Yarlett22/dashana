@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashana | Jabones artesanales</title>
+<meta name="description" content="Jabones artesanales hechos a mano con plantas naturales: figuras únicas, cuidado natural para tu piel y recuerdos para ocasiones especiales. Pedidos por WhatsApp.">
+<meta property="og:title" content="Dashana | Jabones artesanales">
+<meta property="og:description" content="Jabones artesanales con figuras únicas, hechos a mano con plantas naturales. Personaliza el tuyo y pide por WhatsApp.">
+<meta property="og:image" content="https://yarlett22.github.io/dashana/img/figuras/angelito-alas.webp">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#6B2A7D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='16' width='52' height='36' rx='12' fill='%23C9B3E0'/%3E%3Ctext x='32' y='43' font-family='Georgia' font-size='26' fill='%236B2A7D' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Fraunces:opsz,wght@9..144,600&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+
+<div class="banner">Regalos navideños y recuerdos para fiestas de fin de año · Pide con anticipación</div>
+
+<header class="header">
+  <div class="contenedor header__fila">
+    <a href="#inicio" class="logo" aria-label="Dashana, ir al inicio">
+      <span class="logo__nombre">Dashana</span>
+      <span class="logo__sub">Jabones artesanales</span>
+    </a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#cuidado">Cuidado natural</a>
+      <a href="#figuras">Figuras</a>
+      <a href="#personaliza">Personaliza</a>
+      <a href="#ocasiones">Ocasiones</a>
+      <a href="#plantas">Plantas</a>
+      <a href="#nosotros">Nosotros</a>
+      <a class="boton boton--morado boton--chico js-wa-general" href="#" target="_blank" rel="noopener">Escríbenos</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- Inicio -->
+<section id="inicio" class="hero">
+  <div class="contenedor hero__fila">
+    <div class="hero__texto">
+      <span class="eyebrow">Hecho a mano con plantas medicinales</span>
+      <h1>Jabones artesanales que enamoran</h1>
+      <p class="hero__intro">Angelitos, animalitos, flores y muchas figuras más, hechas a mano con plantas naturales. Para regalar, decorar y consentir tu piel.</p>
+      <div class="botones">
+        <a href="#personaliza" class="boton boton--morado">Personaliza el tuyo</a>
+        <a href="#figuras" class="boton boton--borde">Ver figuras</a>
+      </div>
+      <ul class="hero__sellos">
+        <li>Figuras únicas</li><li>100% artesanal</li><li>Plantas naturales</li><li>Pedidos para eventos</li>
+      </ul>
+    </div>
+    <div class="hero__fotos">
+      <img class="hero__foto hero__foto--grande" src="img/figuras/angelito-alas.webp" alt="Jabón artesanal con forma de angelito entre alas, color rosa" width="900" height="900">
+      <img class="hero__foto hero__foto--a" src="img/figuras/conejita.webp" alt="Jabón con forma de conejita, color crema" width="900" height="900">
+      <img class="hero__foto hero__foto--b" src="img/figuras/osito-miel.webp" alt="Jabón con forma de osito en tarro de miel, color rosa" width="900" height="900">
+    </div>
+  </div>
+</section>
+
+<!-- Cuidado natural -->
+<section id="cuidado" class="seccion contenedor">
+  <div class="seccion__cabecera">
+    <h2>Cuidado natural para tu piel</h2>
+    <p>Jabones con plantas e ingredientes naturales para consentir tu piel todos los días.</p>
+  </div>
+  <div class="chips" id="filtros" role="group" aria-label="Filtrar por categoría"></div>
+  <div class="grilla grilla--productos" id="lista-cuidado"></div>
+</section>
+
+<!-- Figuras -->
+<section id="figuras" class="seccion seccion--suave">
+  <div class="contenedor">
+    <div class="seccion__cabecera">
+      <span class="eyebrow">Colección figuras</span>
+      <h2>Pequeñas obras de arte</h2>
+      <p>Jabones que se regalan, se admiran… y se usan. Elige tu figura favorita en el color y aroma que más te guste.</p>
+    </div>
+    <div class="grilla grilla--figuras" id="lista-figuras"></div>
+    <div class="cta">
+      <div>
+        <strong class="cta__titulo">¿Tienes una figura especial en mente?</strong>
+        <span>El personaje favorito de tu peque, la temática de tu fiesta o algo único: cuéntanos tu idea.</span>
+      </div>
+      <a class="boton boton--morado js-wa" data-msg="Hola Dashana, tengo una idea de figura para mis jabones: " href="#" target="_blank" rel="noopener">Cuéntanos tu idea</a>
+    </div>
+  </div>
+</section>
+
+<!-- Personaliza -->
+<section id="personaliza" class="seccion seccion--menta">
+  <div class="contenedor">
+    <div class="seccion__cabecera">
+      <span class="eyebrow">Diseña tu jabón</span>
+      <h2>Personaliza el tuyo</h2>
+      <p>Juega con formas, colores y aromas, y mira cómo cobra vida tu jabón ideal.</p>
+    </div>
+    <div class="config">
+      <div class="config__vista">
+        <div class="visor" id="visor">
+          <div class="visor__3d" id="visor-3d" aria-label="Vista previa 3D del jabón. Arrastra para girarlo."></div>
+          <figure class="visor__foto" id="visor-foto" hidden>
+            <img id="visor-img" src="" alt="">
+            <figcaption id="visor-pie"></figcaption>
+          </figure>
+        </div>
+        <p class="visor__ayuda" id="visor-ayuda">Arrastra para girar el jabón y verlo por todos lados.</p>
+        <p class="nota">Imagen referencial. Al ser artesanal, cada jabón puede variar ligeramente.</p>
+      </div>
+
+      <div class="config__opciones">
+        <div class="paso">
+          <span class="paso__titulo">1. Forma</span>
+          <span class="paso__sub">Figuras</span>
+          <div class="chips" id="op-figuras"></div>
+          <span class="paso__sub">Formas clásicas (vista 3D)</span>
+          <div class="chips" id="op-simples"></div>
+        </div>
+        <div class="paso">
+          <span class="paso__titulo">2. Color: <span id="color-nombre"></span></span>
+          <div class="colores" id="op-colores"></div>
+        </div>
+        <div class="paso">
+          <span class="paso__titulo">3. Tipo de jabón</span>
+          <div class="chips" id="op-tipos"></div>
+        </div>
+        <div class="paso">
+          <span class="paso__titulo">4. Aroma</span>
+          <div class="chips" id="op-aromas"></div>
+        </div>
+        <div class="paso paso--cantidad">
+          <label class="paso__titulo" for="cantidad">5. Cantidad</label>
+          <input id="cantidad" type="number" min="1" value="10" inputmode="numeric">
+        </div>
+        <div class="resumen">
+          <strong>Tu pedido</strong>
+          <span id="resumen"></span>
+        </div>
+        <a id="pedir" class="boton boton--verde boton--grande" href="#" target="_blank" rel="noopener">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg>
+          Pedir este diseño por WhatsApp
+        </a>
+        <div class="exclusivo">
+          <strong>¿Quieres una forma exclusiva?</strong>
+          <span>Para pedidos grandes hacemos un molde a medida (el logo de tu empresa, una figura especial…). Cuéntanos tu idea y envíanos una foto de referencia.</span>
+          <a class="js-wa" data-msg="Hola Dashana, quiero cotizar un diseño exclusivo (molde a medida). Mi idea es: " href="#" target="_blank" rel="noopener">Cotizar diseño exclusivo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ocasiones -->
+<section id="ocasiones" class="seccion contenedor">
+  <div class="seccion__cabecera">
+    <h2>Recuerdos para ocasiones especiales</h2>
+    <p>Jabones con los colores de tu evento, etiqueta con nombre y fecha, y empaque listo para regalar.</p>
+  </div>
+  <div class="grilla grilla--ocasiones" id="lista-ocasiones"></div>
+  <div class="cta">
+    <div>
+      <strong class="cta__titulo">¿Tienes otra idea en mente?</strong>
+      <span>Cuéntanos tu evento y lo hacemos realidad.</span>
+    </div>
+    <a class="boton boton--morado js-wa" data-msg="Hola Dashana, quiero cotizar jabones para mi evento: " href="#" target="_blank" rel="noopener">Cotiza tu idea</a>
+  </div>
+</section>
+
+<!-- Plantas -->
+<section id="plantas" class="seccion seccion--suave">
+  <div class="contenedor">
+    <div class="seccion__cabecera">
+      <h2>Plantas e ingredientes que usamos</h2>
+      <p>Años de experiencia trabajando con plantas medicinales, ahora en cada jabón.</p>
+    </div>
+    <div class="grilla grilla--plantas" id="lista-plantas"></div>
+  </div>
+</section>
+
+<!-- Nosotros -->
+<section id="nosotros" class="seccion contenedor nosotros">
+  <img class="nosotros__foto" src="img/figuras/angelita-flores.webp" alt="Jabón artesanal con forma de angelita con corona de flores" width="900" height="900" loading="lazy">
+  <div class="nosotros__texto">
+    <h2>Nuestra historia</h2>
+    <p>Dashana nació del conocimiento de las plantas medicinales y de las ganas de compartirlo. Durante años elaboramos productos naturales, y hoy volvemos con jabones artesanales hechos a mano, uno por uno, con ingredientes que conocemos bien.</p>
+    <!-- PENDIENTE: completar con la historia real de la familia cuando esté confirmada -->
+  </div>
+</section>
+
+<!-- Preguntas frecuentes -->
+<section class="faq">
+  <div class="contenedor contenedor--angosto">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Cuánto tarda un pedido personalizado?</summary><p>Depende de la cantidad y del diseño. Escríbenos por WhatsApp y te confirmamos el tiempo exacto. Para eventos, te recomendamos pedir con anticipación.</p></details>
+    <details><summary>¿Hacen envíos?</summary><p>Coordinamos la entrega o el envío contigo por WhatsApp.</p></details>
+    <details><summary>¿Cómo pago?</summary><p>El pago se coordina directamente por WhatsApp al confirmar tu pedido.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="contenedor footer__fila">
+    <div>
+      <span class="logo__nombre logo__nombre--claro">Dashana</span>
+      <p>Producto artesanal hecho con plantas medicinales</p>
+    </div>
+    <div class="footer__contacto">
+      <strong>Contacto</strong>
+      <a class="js-wa-general" href="#" target="_blank" rel="noopener">WhatsApp 965 231 034</a>
+      <!-- Agregar aquí los enlaces de Instagram y Facebook -->
+    </div>
+  </div>
+  <p class="footer__copy">© <span id="anio"></span> Dashana. Todos los derechos reservados.</p>
+</footer>
+
+<a class="wa-flotante js-wa-general" href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/><path d="M9 9.5c.3 2 2 3.8 4.5 4.5"/></svg>
+</a>
+
+<script src="js/datos.js"></script>
+<script src="js/app.js"></script>
+<script type="module" src="js/visor3d.js"></script>
+</body>
+</html>
