@@ -66,12 +66,13 @@ window.DATOS = {
 
   // ---------- Colección Navidad ----------
   navidad: [
-    { nombre: "Arbolito Feliz Navidad", foto: "img/navidad/arbolito.webp",
+    { nombre: "Arbolito Feliz Navidad", foto: "img/navidad/arbolito.webp", repintar: true,
+      proteger: "img/navidad/arbolito-dibujo.png", // la frase y la escarcha doradas no se repintan
       descripcion: "Jabón de glicerina con brillo dorado. Llena tu baño de espíritu navideño y es ideal como regalo." },
     { nombre: "Galletita de jengibre", foto: "img/navidad/galleta-jengibre.webp", repintar: true,
       proteger: "img/navidad/galleta-jengibre-dibujo.png", // el dibujo impreso no se repinta
       descripcion: "Jabón suave y colorido que hace del baño de los niños un momento divertido estas fiestas." },
-    { nombre: "Sagrada Familia", foto: "img/navidad/sagrada-familia.webp",
+    { nombre: "Sagrada Familia", foto: "img/navidad/sagrada-familia.webp", repintar: true,
       descripcion: "Jabón artesanal con destellos dorados. Un regalo con significado para compartir en familia." }
   ],
 
