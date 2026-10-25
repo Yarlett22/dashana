@@ -48,6 +48,8 @@ window.DATOS = {
       descripcion: "Con romero, de aroma herbal fresco. Deja tu piel limpia y con una agradable sensación de frescura." },
     { nombre: "Kalanchoe", categoria: "Cuidado de la piel", foto: "img/cuidado/kalanchoe.webp",
       descripcion: "Con extracto de kalanchoe, planta tradicional muy apreciada." },
+    { nombre: "Exfoliante de café y canela", categoria: "Cuidado de la piel", foto: "img/cuidado/exfoliante-cafe.webp",
+      descripcion: "Con café molido y canela en polvo que exfolian suavemente, más aceite de oliva, aceite de coco y vitamina E. Limpia a profundidad y ayuda a reducir la apariencia de puntos negros." },
     { nombre: "Lavanda relajante", categoria: "Relajantes", foto: null, color: "#C9B3E0",
       descripcion: "Con aceite esencial de lavanda. Ideal para relajarte antes de dormir." },
     { nombre: "Carbón activado", categoria: "Cuidado de la piel", foto: null, color: "#3A3A3A",
