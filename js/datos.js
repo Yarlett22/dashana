@@ -82,12 +82,12 @@ window.DATOS = {
 
   // ---------- Plantas e ingredientes ----------
   plantas: [
-    { nombre: "Kalanchoe", foto: null, color: "#DDEFE0", descripcion: "Planta tradicional muy usada en el cuidado natural de la piel." },
-    { nombre: "Carbón activado", foto: null, color: "#EDEDED", descripcion: "Ayuda a limpiar a profundidad la piel con tendencia grasa." },
-    { nombre: "Lavanda", foto: null, color: "#EFE4F3", descripcion: "Aroma relajante, ideal para la noche." },
-    { nombre: "Manzanilla", foto: null, color: "#FBF1CF", descripcion: "Suave y calmante, perfecta para piel sensible." },
-    { nombre: "Avena", foto: null, color: "#F7F0E1", descripcion: "Exfoliación delicada y sensación de suavidad." },
-    { nombre: "Semillas de chía", foto: null, color: "#E8E2D6", descripcion: "Exfolian suavemente y aportan omega 3 y antioxidantes a tu piel." }
+    { nombre: "Kalanchoe", foto: "img/plantas/kalanchoe.webp", color: "#DDEFE0", descripcion: "Planta tradicional muy usada en el cuidado natural de la piel." },
+    { nombre: "Carbón activado", foto: "img/plantas/carbon-activado.webp", color: "#EDEDED", descripcion: "Ayuda a limpiar a profundidad la piel con tendencia grasa." },
+    { nombre: "Lavanda", foto: "img/plantas/lavanda.webp", color: "#EFE4F3", descripcion: "Aroma relajante, ideal para la noche." },
+    { nombre: "Manzanilla", foto: "img/plantas/manzanilla.webp", color: "#FBF1CF", descripcion: "Suave y calmante, perfecta para piel sensible." },
+    { nombre: "Avena", foto: "img/plantas/avena.webp", color: "#F7F0E1", descripcion: "Exfoliación delicada y sensación de suavidad." },
+    { nombre: "Semillas de chía", foto: "img/plantas/chia.webp", color: "#E8E2D6", descripcion: "Exfolian suavemente y aportan omega 3 y antioxidantes a tu piel." }
   ],
 
   // ---------- Opciones del configurador "Personaliza el tuyo" ----------
