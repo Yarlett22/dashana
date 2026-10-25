@@ -118,9 +118,9 @@ window.DATOS = {
   ],
   // Moldes extra que también se ofrecen en el configurador (además de figuras y Navidad)
   moldesExtra: [
-    { nombre: "Rosa", foto: "img/cuidado/rosas.webp", repintar: true, pintar: "img/cuidado/rosas-zona.png" },
+    { nombre: "Rosa", foto: "img/cuidado/rosas-config.webp", repintar: true, pintar: "img/cuidado/rosas-zona.png", contraste: 0.6 },
     { nombre: "Flor de lavanda", foto: "img/cuidado/lavanda.webp", repintar: true },
-    { nombre: "Hoja", foto: "img/cuidado/carbon.webp" }
+    { nombre: "Hoja", foto: "img/cuidado/hoja-config.webp", repintar: true, pintar: "img/cuidado/hoja-zona.png", contraste: 1.6 } // la escarcha dorada no se repinta
   ],
   // colorFijo: el ingrediente define el color; el cliente no puede elegir otro
   tipos: [

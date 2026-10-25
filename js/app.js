@@ -168,7 +168,7 @@
         if (prot) m = esPintar ? prot[i * 4] / 255 : m * (1 - prot[i * 4] / 255);
         mascara[i] = m; luz[i] = l; suma += l * m; peso += m;
       }
-      c.w = w; c.h = h; c.datos = px; c.mascara = mascara; c.luz = luz; c.luzMedia = peso ? suma / peso : 0.7; c.contraste = esPintar ? 0.6 : 1.1;
+      c.w = w; c.h = h; c.datos = px; c.mascara = mascara; c.luz = luz; c.luzMedia = peso ? suma / peso : 0.7; c.contraste = zona.contraste || 1.1;
       c.espera.forEach(function (f) { f(c); }); c.espera = [];
     }
     function cargado() { if (--pendientes === 0) procesar(); }
@@ -242,7 +242,7 @@
         pedidoColor++; imgV.src = fotoColor;
         pie = "Así se ve en color " + nombreColor.toLowerCase() + ".";
       } else if (figura.repintar) {
-        recolorear(figura.foto, hexElegido, { proteger: figura.proteger, pintar: figura.pintar });
+        recolorear(figura.foto, hexElegido, { proteger: figura.proteger, pintar: figura.pintar, contraste: figura.contraste });
         pie = "Vista aproximada en color " + nombreColor.toLowerCase() + ".";
       } else {
         pedidoColor++; imgV.src = figura.foto;
