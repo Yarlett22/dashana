@@ -39,7 +39,7 @@ window.DATOS = {
   // categoria: "Aromáticos", "Cuidado de la piel" o "Relajantes"
   cuidado: [
     { nombre: "Sandía masajeador", categoria: "Relajantes", foto: "img/cuidado/sandia-masajeador.webp",
-      descripcion: "Con relieves que masajean tu piel mientras te bañas. Fresco, divertido y relajante." },
+      descripcion: "Con relieves que masajean tu piel mientras te bañas y semillas de chía, que exfolian suavemente y aportan omega 3 y antioxidantes." },
     { nombre: "Miel y abejita", categoria: "Cuidado de la piel", foto: "img/cuidado/miel-abejita.webp",
       descripcion: "Con el dulzor de la miel, deja tu piel suave e hidratada." },
     { nombre: "Flores de cerezo", categoria: "Aromáticos", foto: "img/cuidado/flores-cerezo.webp",
@@ -86,7 +86,8 @@ window.DATOS = {
     { nombre: "Carbón activado", foto: null, color: "#EDEDED", descripcion: "Ayuda a limpiar a profundidad la piel con tendencia grasa." },
     { nombre: "Lavanda", foto: null, color: "#EFE4F3", descripcion: "Aroma relajante, ideal para la noche." },
     { nombre: "Manzanilla", foto: null, color: "#FBF1CF", descripcion: "Suave y calmante, perfecta para piel sensible." },
-    { nombre: "Avena", foto: null, color: "#F7F0E1", descripcion: "Exfoliación delicada y sensación de suavidad." }
+    { nombre: "Avena", foto: null, color: "#F7F0E1", descripcion: "Exfoliación delicada y sensación de suavidad." },
+    { nombre: "Semillas de chía", foto: null, color: "#E8E2D6", descripcion: "Exfolian suavemente y aportan omega 3 y antioxidantes a tu piel." }
   ],
 
   // ---------- Opciones del configurador "Personaliza el tuyo" ----------
