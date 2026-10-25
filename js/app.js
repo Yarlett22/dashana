@@ -139,14 +139,22 @@
     var q = l < 0.5 ? l * (1 + s) : l + s - l * s, p = 2 * l - q;
     return [hue2(p, q, h + 1 / 3), hue2(p, q, h), hue2(p, q, h - 1 / 3)];
   }
-  function prepararFoto(src, listo) {
+  // zona (opcional): ruta de una máscara en blanco y negro; lo blanco (p. ej. un dibujo impreso) no se repinta
+  function prepararFoto(src, listo, zona) {
     if (cacheFotos[src]) { if (cacheFotos[src].datos) listo(cacheFotos[src]); else cacheFotos[src].espera.push(listo); return; }
     var c = cacheFotos[src] = { espera: [listo] };
-    var img = new Image();
-    img.onload = function () {
+    var img = new Image(), imgZona = zona ? new Image() : null, pendientes = zona ? 2 : 1;
+    function procesar() {
       var w = img.naturalWidth, h = img.naturalHeight, cv = document.createElement("canvas");
       cv.width = w; cv.height = h;
-      var ctx = cv.getContext("2d"); ctx.drawImage(img, 0, 0);
+      var ctx = cv.getContext("2d");
+      var prot = null;
+      if (imgZona && imgZona.naturalWidth) {
+        ctx.drawImage(imgZona, 0, 0, w, h);
+        prot = ctx.getImageData(0, 0, w, h).data;
+        ctx.clearRect(0, 0, w, h);
+      }
+      ctx.drawImage(img, 0, 0);
       var px = ctx.getImageData(0, 0, w, h).data, n = w * h;
       var mascara = new Float32Array(n), luz = new Float32Array(n), suma = 0, peso = 0;
       for (var i = 0; i < n; i++) {
@@ -154,15 +162,19 @@
         var croma = Math.max(r, g, b) - Math.min(r, g, b);
         var m = Math.min(1, Math.max(0, (croma - 0.035) / 0.06));
         var l = rgbHsl(r, g, b)[2];
+        if (prot) m *= 1 - prot[i * 4] / 255;
         mascara[i] = m; luz[i] = l; suma += l * m; peso += m;
       }
       c.w = w; c.h = h; c.datos = px; c.mascara = mascara; c.luz = luz; c.luzMedia = peso ? suma / peso : 0.7;
       c.espera.forEach(function (f) { f(c); }); c.espera = [];
-    };
+    }
+    function cargado() { if (--pendientes === 0) procesar(); }
+    img.onload = cargado;
+    if (imgZona) { imgZona.onload = cargado; imgZona.onerror = cargado; imgZona.src = zona; }
     img.src = src;
   }
   var pedidoColor = 0;
-  function recolorear(src, hex) {
+  function recolorear(src, hex, zona) {
     var turno = ++pedidoColor;
     prepararFoto(src, function (c) {
       if (turno !== pedidoColor) return;
@@ -182,7 +194,7 @@
       }
       ctx.putImageData(salida, 0, 0);
       document.getElementById("visor-img").src = cv.toDataURL("image/jpeg", 0.92);
-    });
+    }, zona);
   }
 
   function actualizar() {
@@ -227,7 +239,7 @@
         pedidoColor++; imgV.src = fotoColor;
         pie = "Así se ve en color " + nombreColor.toLowerCase() + ".";
       } else if (figura.repintar) {
-        recolorear(figura.foto, hexElegido);
+        recolorear(figura.foto, hexElegido, figura.proteger);
         pie = "Vista aproximada en color " + nombreColor.toLowerCase() + ".";
       } else {
         pedidoColor++; imgV.src = figura.foto;
