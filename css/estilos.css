@@ -57,9 +57,10 @@ a { color: var(--morado); }
 
 /* Banner y header */
 .banner {
-  background: var(--verde); color: #fff; text-align: center;
-  padding: 10px 16px; font-size: 14px; font-weight: 700;
+  display: block; background: var(--verde); color: #fff; text-align: center;
+  padding: 10px 16px; font-size: 14px; font-weight: 700; text-decoration: none;
 }
+.banner:hover { background: #24552d; color: #fff; }
 .header {
   position: sticky; top: 0; z-index: 10;
   background: rgba(251, 248, 242, .95); backdrop-filter: blur(6px);
@@ -119,7 +120,7 @@ a { color: var(--morado); }
 .tarjeta__foto { aspect-ratio: 1 / 1; background: var(--fondo-foto); display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .tarjeta__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
 .tarjeta:hover .tarjeta__foto img { transform: scale(1.04); }
-.tarjeta__foto--ilustracion { aspect-ratio: 4 / 3; }
+.tarjeta__foto--ilustracion { aspect-ratio: 1 / 1; }
 .tarjeta__foto--ilustracion svg { width: 60%; height: auto; }
 .tarjeta__cuerpo { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
 .tarjeta__cat { font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--verde); }

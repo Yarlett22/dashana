@@ -38,6 +38,12 @@ window.DATOS = {
   // ---------- Cuidado natural para tu piel ----------
   // categoria: "Aromáticos", "Cuidado de la piel" o "Relajantes"
   cuidado: [
+    { nombre: "Sandía masajeador", categoria: "Relajantes", foto: "img/cuidado/sandia-masajeador.webp",
+      descripcion: "Con relieves que masajean tu piel mientras te bañas. Fresco, divertido y relajante." },
+    { nombre: "Miel y abejita", categoria: "Cuidado de la piel", foto: "img/cuidado/miel-abejita.webp",
+      descripcion: "Con el dulzor de la miel, deja tu piel suave e hidratada." },
+    { nombre: "Flores de cerezo", categoria: "Aromáticos", foto: "img/cuidado/flores-cerezo.webp",
+      descripcion: "Delicadas flores con destellos dorados y un aroma floral que enamora." },
     { nombre: "Lavanda relajante", categoria: "Relajantes", foto: null, color: "#C9B3E0",
       descripcion: "Con aceite esencial de lavanda. Ideal para relajarte antes de dormir." },
     { nombre: "Carbón activado", categoria: "Cuidado de la piel", foto: null, color: "#3A3A3A",
@@ -50,6 +56,16 @@ window.DATOS = {
       descripcion: "Aroma floral y color pastel. Ideal para regalar." },
     { nombre: "Antiestrés", categoria: "Relajantes", foto: null, color: "#BFE3DA",
       descripcion: "Mezcla de lavanda, manzanilla y menta para un momento de calma." }
+  ],
+
+  // ---------- Colección Navidad ----------
+  navidad: [
+    { nombre: "Arbolito Feliz Navidad", foto: "img/navidad/arbolito.webp",
+      descripcion: "Verde brillante con mensaje dorado. El detalle perfecto para la mesa navideña." },
+    { nombre: "Galletita de jengibre", foto: "img/navidad/galleta-jengibre.webp",
+      descripcion: "Tierno y colorido, ideal para regalar a los más pequeños." },
+    { nombre: "Sagrada Familia", foto: "img/navidad/sagrada-familia.webp",
+      descripcion: "Dorada y llena de significado, para celebrar el verdadero sentido de la Navidad." }
   ],
 
   // ---------- Ocasiones especiales ----------

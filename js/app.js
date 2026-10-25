@@ -61,6 +61,15 @@
       '</p><a class="boton boton--morado" target="_blank" rel="noopener" href="' + wa("Hola Dashana, me encanta el jabón " + f.nombre + ". Quisiera cotizar.") + '">Lo quiero</a></div>'));
   });
 
+  // ---- Navidad ----
+  var listaNav = document.getElementById("lista-navidad");
+  (D.navidad || []).forEach(function (f) {
+    listaNav.appendChild(el("article", { class: "tarjeta" },
+      '<div class="tarjeta__foto"><img src="' + esc(f.foto) + '" alt="Jabón navideño ' + esc(f.nombre.toLowerCase()) + '" loading="lazy" width="900" height="900"></div>' +
+      '<div class="tarjeta__cuerpo"><h3>' + esc(f.nombre) + '</h3><p class="tarjeta__desc">' + esc(f.descripcion) +
+      '</p><a class="boton boton--morado" target="_blank" rel="noopener" href="' + wa("Hola Dashana, me interesa el jabón navideño " + f.nombre + ". Quisiera cotizar.") + '">Lo quiero</a></div>'));
+  });
+
   // ---- Ocasiones ----
   var listaOc = document.getElementById("lista-ocasiones");
   D.ocasiones.forEach(function (o) {
