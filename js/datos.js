@@ -44,6 +44,8 @@ window.DATOS = {
       descripcion: "Con el dulzor de la miel, deja tu piel suave e hidratada." },
     { nombre: "Flores de cerezo", categoria: "Aromáticos", foto: "img/cuidado/flores-cerezo.webp",
       descripcion: "Delicadas flores con destellos dorados y un aroma floral que enamora." },
+    { nombre: "Romero", categoria: "Cuidado de la piel", foto: "img/cuidado/romero.webp",
+      descripcion: "Con romero, de aroma herbal fresco. Deja tu piel limpia y con una agradable sensación de frescura." },
     { nombre: "Lavanda relajante", categoria: "Relajantes", foto: null, color: "#C9B3E0",
       descripcion: "Con aceite esencial de lavanda. Ideal para relajarte antes de dormir." },
     { nombre: "Carbón activado", categoria: "Cuidado de la piel", foto: null, color: "#3A3A3A",
