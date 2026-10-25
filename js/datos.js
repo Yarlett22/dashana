@@ -52,6 +52,8 @@ window.DATOS = {
       descripcion: "Con café molido y canela en polvo que exfolian suavemente, más aceite de oliva, aceite de coco y vitamina E. Limpia a profundidad y ayuda a reducir la apariencia de puntos negros." },
     { nombre: "Jabón íntimo", categoria: "Cuidado de la piel", foto: "img/cuidado/intimo.webp",
       descripcion: "Para la higiene íntima externa, con macerado de clavel y aceite esencial de melisa. Limpia con suavidad y deja una agradable sensación de frescura." },
+    { nombre: "Aclarante de arroz y avena", categoria: "Cuidado de la piel", foto: "img/cuidado/aclarante-arroz.webp",
+      descripcion: "Con arroz, yuca y avena en polvo, miel, manteca de karité y aceite esencial de naranja. Ayuda a unificar el tono y suavizar la apariencia de manchas." },
     { nombre: "Lavanda relajante", categoria: "Relajantes", foto: null, color: "#C9B3E0",
       descripcion: "Con aceite esencial de lavanda. Ideal para relajarte antes de dormir." },
     { nombre: "Carbón activado", categoria: "Cuidado de la piel", foto: null, color: "#3A3A3A",
