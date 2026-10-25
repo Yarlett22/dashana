@@ -54,14 +54,14 @@ window.DATOS = {
       descripcion: "Para la higiene íntima externa, con macerado de clavel y aceite esencial de melisa. Limpia con suavidad y deja una agradable sensación de frescura." },
     { nombre: "Aclarante de arroz y avena", categoria: "Cuidado de la piel", foto: "img/cuidado/aclarante-arroz.webp",
       descripcion: "Con arroz, yuca y avena en polvo, miel, manteca de karité y aceite esencial de naranja. Ayuda a unificar el tono y suavizar la apariencia de manchas." },
-    { nombre: "Lavanda relajante", categoria: "Relajantes", foto: null, color: "#C9B3E0",
-      descripcion: "Con aceite esencial de lavanda. Ideal para relajarte antes de dormir." },
-    { nombre: "Carbón activado", categoria: "Cuidado de la piel", foto: null, color: "#3A3A3A",
-      descripcion: "Para piel con tendencia grasa. Limpieza profunda." },
-    { nombre: "Rosas", categoria: "Aromáticos", foto: null, color: "#F4C6D2",
-      descripcion: "Aroma floral y color pastel. Ideal para regalar." },
-    { nombre: "Antiestrés", categoria: "Relajantes", foto: null, color: "#BFE3DA",
-      descripcion: "Mezcla de lavanda, manzanilla y menta para un momento de calma." }
+    { nombre: "Lavanda relajante", categoria: "Relajantes", foto: "img/cuidado/lavanda.webp",
+      descripcion: "Flor de glicerina con botones de lavanda y aceite esencial de lavanda. Ideal para relajarte antes de dormir." },
+    { nombre: "Carbón activado", categoria: "Cuidado de la piel", foto: "img/cuidado/carbon.webp",
+      descripcion: "Hoja de carbón activado con destellos dorados. Limpieza profunda para piel con tendencia grasa." },
+    { nombre: "Rosas", categoria: "Aromáticos", foto: "img/cuidado/rosas.webp",
+      descripcion: "Una rosa en relieve con brillo perlado y aroma floral. Ideal para regalar." },
+    { nombre: "Antiestrés", categoria: "Relajantes", foto: "img/cuidado/antiestres.webp",
+      descripcion: "Glicerina con flores de manzanilla, lavanda y hojitas de menta. Un pequeño jardín para un momento de calma." }
   ],
 
   // ---------- Colección Navidad ----------
