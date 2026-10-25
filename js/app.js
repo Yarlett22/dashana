@@ -101,7 +101,8 @@
       contenedor.appendChild(b);
     });
   }
-  chipGrupo(document.getElementById("op-figuras"), D.figuras, "forma", function (f, i) { return "figura:" + f.nombre; }, function (f) { return f.nombre; });
+  var moldes = D.figuras.concat(D.navidad || [], D.moldesExtra || []);
+  chipGrupo(document.getElementById("op-figuras"), moldes, "forma", function (f, i) { return "figura:" + f.nombre; }, function (f) { return f.nombre; });
   chipGrupo(document.getElementById("op-simples"), D.formasSimples, "forma", function (f) { return "simple:" + f.id; }, function (f) { return f.nombre; });
   chipGrupo(document.getElementById("op-tipos"), D.tipos, "tipo", function (t) { return t.id; }, function (t) { return t.nombre; });
   chipGrupo(document.getElementById("op-aromas"), D.aromas, "aroma", function (a) { return a; }, function (a) { return a; });
@@ -189,15 +190,19 @@
     var nombreForma, figura;
     if (esFigura) {
       nombreForma = estado.forma.slice(7);
-      figura = D.figuras.filter(function (f) { return f.nombre === nombreForma; })[0];
+      figura = moldes.filter(function (f) { return f.nombre === nombreForma; })[0];
     } else {
       var s = D.formasSimples.filter(function (f) { return "simple:" + f.id === estado.forma; })[0];
       nombreForma = s.nombre;
     }
-    var esCarbon = estado.tipo === "carbon";
-    var color = D.colores[estado.color];
-    var nombreColor = esCarbon ? "Negro (carbón activado)" : color.nombre;
     var tipo = D.tipos.filter(function (t) { return t.id === estado.tipo; })[0];
+    var fijo = tipo.colorFijo;
+    var esCarbon = !!fijo;
+    var color = D.colores[estado.color];
+    var nombreColor = fijo ? fijo.nombre : color.nombre;
+    var hexFinal = fijo ? fijo.hex : color.hex;
+    opColores.classList.toggle("colores--bloqueados", !!fijo);
+    opColores.querySelectorAll("button").forEach(function (b) { b.disabled = !!fijo; });
 
     // marcar seleccionados
     document.querySelectorAll(".config [data-valor]").forEach(function (b) {
@@ -206,7 +211,7 @@
         : grupo === "op-tipos" ? b.dataset.valor === estado.tipo
         : grupo === "op-aromas" ? b.dataset.valor === estado.aroma
         : grupo === "op-colores" ? b.dataset.valor === String(estado.color) : false;
-      b.setAttribute("aria-pressed", sel ? "true" : "false");
+      b.setAttribute("aria-pressed", sel && !(grupo === "op-colores" && fijo) ? "true" : "false");
     });
     document.getElementById("color-nombre").textContent = nombreColor;
 
@@ -214,7 +219,7 @@
     visor3d.hidden = esFigura;
     visorFoto.hidden = !esFigura;
     if (esFigura) {
-      var hexElegido = esCarbon ? "#2E2E2E" : color.hex;
+      var hexElegido = hexFinal;
       var fotoColor = !esCarbon && figura.fotosPorColor && figura.fotosPorColor[color.nombre];
       var imgV = document.getElementById("visor-img");
       var pie;
@@ -234,7 +239,7 @@
     } else {
       ayuda.textContent = "Arrastra para girar el jabón y verlo por todos lados.";
       window.dispatchEvent(new CustomEvent("dashana:jabon", {
-        detail: { forma: estado.forma.slice(7), color: esCarbon ? "#2E2E2E" : color.hex, tipo: estado.tipo }
+        detail: { forma: estado.forma.slice(7), color: hexFinal, tipo: estado.tipo }
       }));
     }
 
@@ -243,7 +248,7 @@
     document.getElementById("pedir").href = wa(
       "Hola Dashana, quiero un jabón personalizado:\n• Forma: " + nombreForma + "\n• Color: " + nombreColor +
       "\n• Tipo: " + tipo.nombre + "\n• Aroma: " + estado.aroma + "\n• Cantidad: " + estado.cantidad);
-    window.__dashanaJabon = { forma: estado.forma.slice(7), color: esCarbon ? "#2E2E2E" : color.hex, tipo: estado.tipo };
+    window.__dashanaJabon = { forma: estado.forma.slice(7), color: hexFinal, tipo: estado.tipo };
   }
   actualizar();
   // ---- Efecto de inclinación 3D en las fotos de figuras ----

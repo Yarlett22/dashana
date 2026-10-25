@@ -113,11 +113,23 @@ window.DATOS = {
     { nombre: "Amarillo pastel", hex: "#F3E3A6" },
     { nombre: "Crema", hex: "#EFE3C8" }
   ],
+  // Moldes extra que también se ofrecen en el configurador (además de figuras y Navidad)
+  moldesExtra: [
+    { nombre: "Rosa", foto: "img/cuidado/rosas.webp", repintar: true },
+    { nombre: "Flor de lavanda", foto: "img/cuidado/lavanda.webp", repintar: true },
+    { nombre: "Hoja", foto: "img/cuidado/carbon.webp" }
+  ],
+  // colorFijo: el ingrediente define el color; el cliente no puede elegir otro
   tipos: [
     { id: "glicerina", nombre: "Glicerina" },
-    { id: "carbon", nombre: "Carbón activado" },
-    { id: "avena", nombre: "Avena" },
-    { id: "lavanda", nombre: "Con flores de lavanda" }
+    { id: "lavanda", nombre: "Con flores de lavanda" },
+    { id: "avena", nombre: "Avena y miel" },
+    { id: "romero", nombre: "Romero" },
+    { id: "kalanchoe", nombre: "Kalanchoe" },
+    { id: "arroz", nombre: "Arroz y avena (aclarante)" },
+    { id: "antiestres", nombre: "Antiestrés (manzanilla, lavanda y menta)" },
+    { id: "carbon", nombre: "Carbón activado", colorFijo: { nombre: "Negro (carbón activado)", hex: "#2E2E2E" } },
+    { id: "cafe", nombre: "Café y canela (exfoliante)", colorFijo: { nombre: "Marrón (café y canela)", hex: "#4A3022" } }
   ],
   aromas: ["Lavanda", "Rosas", "Coco", "Vainilla", "Manzanilla", "Eucalipto", "Sin aroma"]
 };

@@ -118,6 +118,23 @@ function iniciar() {
         m.scale.set(1.6, 0.5, 1); m.position.set(x, yTop, z); m.rotation.y = x * 10;
         detalles.add(m);
       });
+    } else if (tipo === "cafe" || tipo === "romero" || tipo === "arroz") {
+      const col = tipo === "cafe" ? 0x2a1a10 : tipo === "romero" ? 0x3f5a2e : 0xe8dcc4;
+      const mat = new THREE.MeshStandardMaterial({ color: col, roughness: 0.9 });
+      puntosEncima(40, 0.62, 11).forEach(([x, z]) => {
+        const m = new THREE.Mesh(new THREE.SphereGeometry(0.022, 6, 6), mat.clone());
+        m.position.set(x, yTop, z);
+        detalles.add(m);
+      });
+    } else if (tipo === "antiestres") {
+      [[0xf4f1e6, 0.06], [0x7a4e9e, 0.04], [0x5c9a55, 0.045]].forEach(([col, r], k) => {
+        const mat = new THREE.MeshStandardMaterial({ color: col, roughness: 0.7 });
+        puntosEncima(8, 0.55, 5 + k * 7).forEach(([x, z]) => {
+          const m = new THREE.Mesh(new THREE.SphereGeometry(r, 10, 10), mat.clone());
+          m.scale.set(1, 0.4, 1); m.position.set(x, yTop + 0.01, z);
+          detalles.add(m);
+        });
+      });
     } else if (tipo === "lavanda") {
       const mat = new THREE.MeshStandardMaterial({ color: 0x7a4e9e, roughness: 0.7 });
       puntosEncima(18, 0.55, 3).forEach(([x, z]) => {
@@ -135,7 +152,7 @@ function iniciar() {
     const glicerina = cfg.tipo === "glicerina";
     material.transparent = glicerina;
     material.opacity = glicerina ? 0.9 : 1;
-    material.roughness = glicerina ? 0.25 : cfg.tipo === "carbon" ? 0.6 : 0.45;
+    material.roughness = glicerina ? 0.25 : (cfg.tipo === "carbon" || cfg.tipo === "cafe") ? 0.6 : 0.45;
     material.needsUpdate = true;
     ponerDetalles(cfg.tipo);
   }

@@ -232,3 +232,6 @@ details p { margin-top: 10px; color: var(--texto-2); line-height: 1.6; }
 
 :focus-visible { outline: 3px solid #B99BCF; outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+/* Colores bloqueados cuando el ingrediente define el color */
+.colores--bloqueados .color { opacity: .3; cursor: not-allowed; }
