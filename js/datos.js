@@ -38,8 +38,8 @@ window.DATOS = {
   // ---------- Cuidado natural para tu piel ----------
   // categoria: "Aromáticos", "Cuidado de la piel" o "Relajantes"
   cuidado: [
-    { nombre: "Sandía masajeador", categoria: "Relajantes", foto: "img/cuidado/sandia-masajeador.webp",
-      descripcion: "Con relieves que masajean tu piel mientras te bañas y semillas de chía, que exfolian suavemente y aportan omega 3 y antioxidantes." },
+    { nombre: "Sandía masajeador", categoria: "Cuidado de la piel", foto: "img/cuidado/sandia-masajeador.webp",
+      descripcion: "Masajea tu piel mientras te bañas. Con semillas de chía que exfolian suavemente." },
     { nombre: "Miel y abejita", categoria: "Cuidado de la piel", foto: "img/cuidado/miel-abejita.webp",
       descripcion: "Con el dulzor de la miel, deja tu piel suave e hidratada." },
     { nombre: "Flores de cerezo", categoria: "Aromáticos", foto: "img/cuidado/flores-cerezo.webp",
