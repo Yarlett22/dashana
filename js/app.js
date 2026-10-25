@@ -139,11 +139,14 @@
     var q = l < 0.5 ? l * (1 + s) : l + s - l * s, p = 2 * l - q;
     return [hue2(p, q, h + 1 / 3), hue2(p, q, h), hue2(p, q, h - 1 / 3)];
   }
-  // zona (opcional): ruta de una máscara en blanco y negro; lo blanco (p. ej. un dibujo impreso) no se repinta
+  // zona (opcional): { proteger: máscara cuyo blanco NO se repinta (p. ej. un dibujo impreso),
+  //                   pintar: silueta del jabón; solo se repinta lo blanco, completo y parejo }
   function prepararFoto(src, listo, zona) {
+    zona = zona || {};
+    var rutaZona = zona.pintar || zona.proteger, esPintar = !!zona.pintar;
     if (cacheFotos[src]) { if (cacheFotos[src].datos) listo(cacheFotos[src]); else cacheFotos[src].espera.push(listo); return; }
     var c = cacheFotos[src] = { espera: [listo] };
-    var img = new Image(), imgZona = zona ? new Image() : null, pendientes = zona ? 2 : 1;
+    var img = new Image(), imgZona = rutaZona ? new Image() : null, pendientes = rutaZona ? 2 : 1;
     function procesar() {
       var w = img.naturalWidth, h = img.naturalHeight, cv = document.createElement("canvas");
       cv.width = w; cv.height = h;
@@ -162,15 +165,15 @@
         var croma = Math.max(r, g, b) - Math.min(r, g, b);
         var m = Math.min(1, Math.max(0, (croma - 0.035) / 0.06));
         var l = rgbHsl(r, g, b)[2];
-        if (prot) m *= 1 - prot[i * 4] / 255;
+        if (prot) m = esPintar ? prot[i * 4] / 255 : m * (1 - prot[i * 4] / 255);
         mascara[i] = m; luz[i] = l; suma += l * m; peso += m;
       }
-      c.w = w; c.h = h; c.datos = px; c.mascara = mascara; c.luz = luz; c.luzMedia = peso ? suma / peso : 0.7;
+      c.w = w; c.h = h; c.datos = px; c.mascara = mascara; c.luz = luz; c.luzMedia = peso ? suma / peso : 0.7; c.contraste = esPintar ? 0.6 : 1.1;
       c.espera.forEach(function (f) { f(c); }); c.espera = [];
     }
     function cargado() { if (--pendientes === 0) procesar(); }
     img.onload = cargado;
-    if (imgZona) { imgZona.onload = cargado; imgZona.onerror = cargado; imgZona.src = zona; }
+    if (imgZona) { imgZona.onload = cargado; imgZona.onerror = cargado; imgZona.src = rutaZona; }
     img.src = src;
   }
   var pedidoColor = 0;
@@ -185,7 +188,7 @@
       for (var i = 0, n = c.w * c.h; i < n; i++) {
         var m = c.mascara[i], k = i * 4;
         if (m <= 0) { o[k] = px[k]; o[k + 1] = px[k + 1]; o[k + 2] = px[k + 2]; o[k + 3] = 255; continue; }
-        var l = Math.min(0.98, Math.max(0.02, th[2] + (c.luz[i] - c.luzMedia) * 1.1));
+        var l = Math.min(0.98, Math.max(0.02, th[2] + (c.luz[i] - c.luzMedia) * c.contraste));
         var nuevo = hslRgb(th[0], th[1], l);
         o[k] = px[k] * (1 - m) + nuevo[0] * 255 * m;
         o[k + 1] = px[k + 1] * (1 - m) + nuevo[1] * 255 * m;
@@ -239,7 +242,7 @@
         pedidoColor++; imgV.src = fotoColor;
         pie = "Así se ve en color " + nombreColor.toLowerCase() + ".";
       } else if (figura.repintar) {
-        recolorear(figura.foto, hexElegido, figura.proteger);
+        recolorear(figura.foto, hexElegido, { proteger: figura.proteger, pintar: figura.pintar });
         pie = "Vista aproximada en color " + nombreColor.toLowerCase() + ".";
       } else {
         pedidoColor++; imgV.src = figura.foto;

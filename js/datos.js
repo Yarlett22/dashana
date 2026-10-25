@@ -118,7 +118,7 @@ window.DATOS = {
   ],
   // Moldes extra que también se ofrecen en el configurador (además de figuras y Navidad)
   moldesExtra: [
-    { nombre: "Rosa", foto: "img/cuidado/rosas.webp", repintar: true },
+    { nombre: "Rosa", foto: "img/cuidado/rosas.webp", repintar: true, pintar: "img/cuidado/rosas-zona.png" },
     { nombre: "Flor de lavanda", foto: "img/cuidado/lavanda.webp", repintar: true },
     { nombre: "Hoja", foto: "img/cuidado/carbon.webp" }
   ],
