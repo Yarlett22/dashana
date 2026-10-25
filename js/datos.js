@@ -104,8 +104,7 @@ window.DATOS = {
     { nombre: "Menta", hex: "#BFE3DA" },
     { nombre: "Celeste", hex: "#BCD8EE" },
     { nombre: "Amarillo pastel", hex: "#F3E3A6" },
-    { nombre: "Crema", hex: "#EFE3C8" },
-    { nombre: "Blanco", hex: "#F7F4EE" }
+    { nombre: "Crema", hex: "#EFE3C8" }
   ],
   tipos: [
     { id: "glicerina", nombre: "Glicerina" },
