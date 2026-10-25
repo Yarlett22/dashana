@@ -29,7 +29,7 @@ window.DATOS = {
       descripcion: "Con su lacito y vestido, se roba todas las miradas." },
     { nombre: "Elefantita", foto: "img/figuras/elefantita.webp",
       descripcion: "Dulce y brillante, la favorita de los baby showers." },
-    { nombre: "Flor con corazón", foto: "img/figuras/flor-corazon.webp",
+    { nombre: "Flor con corazón", foto: "img/figuras/flor-corazon.webp", repintar: true,
       descripcion: "Un detalle lleno de amor para mamá, bodas o aniversarios." },
     { nombre: "Osito en tarro de miel", foto: "img/figuras/osito-miel.webp", repintar: true,
       descripcion: "Un osito asomándose de su tarro de miel. Imposible no sonreír." }
