@@ -328,8 +328,8 @@
   })();
   // ---- Tocar la tarjeta para leer la descripción completa (celular) ----
   function revisarVerMas() {
-    document.querySelectorAll(".tarjeta").forEach(function (t) {
-      var d = t.querySelector(".tarjeta__desc");
+    document.querySelectorAll(".tarjeta, .planta").forEach(function (t) {
+      var d = t.querySelector(".tarjeta__desc, .planta p");
       if (!d) return;
       var recortada = t.classList.contains("tarjeta--abierta") || d.scrollHeight > d.clientHeight + 2;
       t.classList.toggle("tarjeta--recortada", recortada);

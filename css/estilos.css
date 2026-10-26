@@ -243,7 +243,7 @@ details p { margin-top: 10px; color: var(--texto-2); line-height: 1.6; }
 /* ===== Carrito de pedido ===== */
 .tarjeta .boton svg, .boton--grande svg { flex: none; }
 .tarjeta--recortada { cursor: pointer; -webkit-tap-highlight-color: transparent; }
-.tarjeta--abierta .tarjeta__desc { display: block !important; max-height: none !important; -webkit-line-clamp: unset !important; overflow: visible !important; }
+.tarjeta--abierta .tarjeta__desc, .tarjeta--abierta.planta p { display: block !important; max-height: none !important; -webkit-line-clamp: unset !important; overflow: visible !important; }
 .boton--inactivo { opacity: .5; pointer-events: none; }
 .sin-scroll { overflow: hidden; }
 
