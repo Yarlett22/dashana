@@ -43,7 +43,7 @@
   var filtros = document.getElementById("filtros");
   function pintarCuidado() {
     var lista = document.getElementById("lista-cuidado");
-    lista.innerHTML = "";
+    lista.innerHTML = ""; lista.scrollLeft = 0;
     D.cuidado.filter(function (p) { return catActual === "Todos" || p.categoria === catActual; }).forEach(function (p) {
       var foto = p.foto
         ? '<div class="tarjeta__foto"><img src="' + esc(p.foto) + '" alt="Jabón ' + esc(p.nombre) + '" loading="lazy"></div>'

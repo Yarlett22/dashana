@@ -285,7 +285,6 @@ details p { margin-top: 10px; color: var(--texto-2); line-height: 1.6; }
 
   /* Cuidado natural: 2 columnas */
   .grilla { gap: 12px; }
-  .grilla--productos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tarjeta__cuerpo { padding: 10px 12px 12px; gap: 4px; }
   .tarjeta__cuerpo > .boton { margin-top: auto; }
   .tarjeta__desc + .boton { margin-top: 8px; }
@@ -299,14 +298,15 @@ details p { margin-top: 10px; color: var(--texto-2); line-height: 1.6; }
   .config .chips { flex-wrap: wrap; overflow: visible; margin-inline: 0; padding-inline: 0; }
 
   /* Carruseles: figuras, Navidad, ocasiones y plantas */
-  .grilla--figuras, .grilla--ocasiones, .grilla--plantas {
+  .grilla--productos, .grilla--figuras, .grilla--ocasiones, .grilla--plantas {
     display: grid; grid-template-columns: none; grid-auto-flow: column;
     overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
     margin-inline: -20px; padding: 2px 20px 8px; scroll-padding-inline: 20px;
   }
-  .grilla--figuras::-webkit-scrollbar, .grilla--ocasiones::-webkit-scrollbar, .grilla--plantas::-webkit-scrollbar { display: none; }
-  .grilla--figuras > *, .grilla--ocasiones > *, .grilla--plantas > * { scroll-snap-align: start; }
+  .grilla--productos::-webkit-scrollbar, .grilla--figuras::-webkit-scrollbar, .grilla--ocasiones::-webkit-scrollbar, .grilla--plantas::-webkit-scrollbar { display: none; }
+  .grilla--productos > *, .grilla--figuras > *, .grilla--ocasiones > *, .grilla--plantas > * { scroll-snap-align: start; }
   .grilla--figuras { grid-auto-columns: 62%; }
+  .grilla--productos { grid-auto-columns: 46%; }
   .grilla--plantas { grid-auto-columns: 44%; }
   .grilla--ocasiones { grid-auto-columns: 40%; }
 
