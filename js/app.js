@@ -297,4 +297,29 @@
     caja.addEventListener("pointerup", function (e) { if (e.pointerType !== "mouse") soltar(); });
     foto.classList.add("balanceo");
   })();
+  // ---- Personaliza en celular: pasos en pestañas ----
+  (function () {
+    var pestanas = Array.prototype.slice.call(document.querySelectorAll(".pestana"));
+    var pasos = Array.prototype.slice.call(document.querySelectorAll(".config__opciones .paso[data-paso]"));
+    if (!pestanas.length) return;
+    var nombres = pestanas.map(function (b) { return b.textContent; });
+    pasos.forEach(function (paso, i) {
+      if (i < pasos.length - 1) {
+        var sig = el("button", { type: "button", class: "paso__siguiente" }, "Siguiente: " + esc(nombres[i + 1]) + " →");
+        sig.addEventListener("click", function () { mostrar(i + 1, true); });
+        paso.appendChild(sig);
+      }
+    });
+    function mostrar(n, enfocar) {
+      pestanas.forEach(function (b, i) {
+        var activo = i === n;
+        b.setAttribute("aria-selected", activo ? "true" : "false");
+        b.tabIndex = activo ? 0 : -1;
+        if (activo && enfocar) { b.focus({ preventScroll: true }); b.scrollIntoView({ block: "nearest", inline: "nearest" }); }
+      });
+      pasos.forEach(function (p, i) { p.classList.toggle("paso--activo", i === n); });
+    }
+    pestanas.forEach(function (b, i) { b.addEventListener("click", function () { mostrar(i, false); }); });
+    mostrar(0, false);
+  })();
 })();
