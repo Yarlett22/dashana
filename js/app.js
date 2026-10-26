@@ -16,6 +16,19 @@
   var iconoRegalo = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E1D5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>';
   var iconoHoja = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2F6B3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>';
 
+  // ---- Menú en celular ----
+  var menuBtn = document.querySelector(".menu-btn"), header = document.querySelector(".header");
+  if (menuBtn) {
+    menuBtn.addEventListener("click", function () {
+      var abierto = header.classList.toggle("header--abierto");
+      menuBtn.setAttribute("aria-expanded", abierto ? "true" : "false");
+      menuBtn.setAttribute("aria-label", abierto ? "Cerrar menú" : "Abrir menú");
+    });
+    document.querySelectorAll(".nav a").forEach(function (a) {
+      a.addEventListener("click", function () { header.classList.remove("header--abierto"); menuBtn.setAttribute("aria-expanded", "false"); });
+    });
+  }
+
   // ---- Enlaces generales de WhatsApp ----
   document.querySelectorAll(".js-wa-general").forEach(function (a) {
     a.href = wa("Hola Dashana, quisiera información sobre sus jabones artesanales.");
@@ -38,7 +51,7 @@
       lista.appendChild(el("article", { class: "tarjeta" },
         foto + '<div class="tarjeta__cuerpo"><span class="tarjeta__cat">' + esc(p.categoria) + "</span><h3>" + esc(p.nombre) +
         '</h3><p class="tarjeta__desc">' + esc(p.descripcion) + '</p><a class="boton boton--verde" target="_blank" rel="noopener" href="' +
-        wa("Hola Dashana, me interesa el jabón " + p.nombre + ".") + '">Consultar por WhatsApp</a></div>'));
+        wa("Hola Dashana, me interesa el jabón " + p.nombre + ".") + '">Consultar<span class="solo-pc"> por WhatsApp</span></a></div>'));
     });
   }
   categorias.forEach(function (c) {

@@ -239,3 +239,89 @@ details p { margin-top: 10px; color: var(--texto-2); line-height: 1.6; }
 
 /* Colores bloqueados cuando el ingrediente define el color */
 .colores--bloqueados .color { opacity: .3; cursor: not-allowed; }
+
+/* ===== Celular: versión compacta (no afecta la computadora) ===== */
+.solo-movil, .menu-btn { display: none; }
+@media (max-width: 760px) {
+  .solo-pc { display: none; }
+  .solo-movil { display: inline; }
+
+  /* Banner y menú */
+  .banner { padding: 8px 12px; font-size: 13px; }
+  .header__fila { flex-wrap: nowrap; padding-top: 8px; padding-bottom: 8px; }
+  .logo__img { height: 48px; }
+  .logo__sub { display: none; }
+  .nav { gap: 8px; margin-left: auto; }
+  .nav .boton--chico { padding: 6px 14px; font-size: 14px; min-height: 40px; }
+  .menu-btn {
+    display: inline-flex; align-items: center; justify-content: center; order: 3;
+    width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--borde-2);
+    background: #fff; color: var(--morado-osc); cursor: pointer; margin-left: 4px;
+  }
+  .header { position: sticky; }
+  .header--abierto .nav {
+    margin-left: 0; position: absolute; left: 0; right: 0; top: 100%;
+    display: flex; flex-direction: column; align-items: stretch; gap: 0;
+    background: #fff; border-bottom: 1px solid var(--borde); box-shadow: 0 12px 24px rgba(78, 29, 92, .12);
+    padding: 8px 20px 16px;
+  }
+  .header--abierto .nav a:not(.boton) { display: block; padding: 12px 4px; border-bottom: 1px solid var(--borde); font-size: 16px; }
+  .header--abierto .nav .boton { margin-top: 12px; }
+
+  /* Portada */
+  .hero__fila { padding-top: 28px; padding-bottom: 32px; gap: 22px; }
+  .hero__texto { gap: 14px; }
+  .hero__intro { font-size: 16px; }
+  .hero__sellos { display: none; }
+  .botones .boton { flex: 1 1 auto; padding: 10px 16px; font-size: 15px; }
+
+  /* Secciones más compactas */
+  .seccion { padding-top: 40px; padding-bottom: 40px; gap: 18px; }
+  .seccion > .contenedor { gap: 18px; }
+  .seccion__cabecera p { font-size: 15px; }
+  .cta { padding: 16px; gap: 12px; }
+  .cta__titulo { font-size: 18px; }
+  .cta .boton { width: 100%; }
+
+  /* Cuidado natural: 2 columnas */
+  .grilla { gap: 12px; }
+  .grilla--productos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tarjeta__cuerpo { padding: 10px 12px 12px; gap: 4px; }
+  .tarjeta__cuerpo > .boton { margin-top: auto; }
+  .tarjeta__desc + .boton { margin-top: 8px; }
+  .tarjeta h3 { font-size: 16px; line-height: 1.25; }
+  .tarjeta__cat { font-size: 10px; letter-spacing: .6px; }
+  .tarjeta__desc { flex: none; font-size: 13px; line-height: 1.4; max-height: 2.8em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .tarjeta .boton { align-self: stretch; margin-top: auto; padding: 8px 10px; font-size: 13px; min-height: 40px; }
+  .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -20px; padding-inline: 20px; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: 0 0 auto; }
+  .config .chips { flex-wrap: wrap; overflow: visible; margin-inline: 0; padding-inline: 0; }
+
+  /* Carruseles: figuras, Navidad, ocasiones y plantas */
+  .grilla--figuras, .grilla--ocasiones, .grilla--plantas {
+    display: grid; grid-template-columns: none; grid-auto-flow: column;
+    overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+    margin-inline: -20px; padding: 2px 20px 8px; scroll-padding-inline: 20px;
+  }
+  .grilla--figuras::-webkit-scrollbar, .grilla--ocasiones::-webkit-scrollbar, .grilla--plantas::-webkit-scrollbar { display: none; }
+  .grilla--figuras > *, .grilla--ocasiones > *, .grilla--plantas > * { scroll-snap-align: start; }
+  .grilla--figuras { grid-auto-columns: 62%; }
+  .grilla--plantas { grid-auto-columns: 44%; }
+  .grilla--ocasiones { grid-auto-columns: 40%; }
+
+  /* Ocasiones compactas */
+  .ocasion { padding: 14px; gap: 8px; }
+  .ocasion p { display: none; }
+  .ocasion h3 { font-size: 16px; flex: 1; }
+  .ocasion .boton { align-self: stretch; padding: 8px 10px; font-size: 14px; min-height: 40px; }
+
+  /* Plantas */
+  .planta__foto { height: 110px; }
+  .planta p { font-size: 13px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+  /* Historia y preguntas */
+  .nosotros { gap: 20px; }
+  .nosotros__texto p { font-size: 15px; line-height: 1.6; }
+  .faq { padding: 40px 0; }
+}
