@@ -240,6 +240,60 @@ details p { margin-top: 10px; color: var(--texto-2); line-height: 1.6; }
 /* Colores bloqueados cuando el ingrediente define el color */
 .colores--bloqueados .color { opacity: .3; cursor: not-allowed; }
 
+/* ===== Carrito de pedido ===== */
+.tarjeta .boton svg, .boton--grande svg { flex: none; }
+.tarjeta__mas { align-self: flex-start; border: 0; background: none; padding: 2px 0; color: var(--morado); font: 800 13px "Nunito Sans", sans-serif; cursor: pointer; text-decoration: underline; }
+.tarjeta--abierta .tarjeta__desc { display: block !important; max-height: none !important; -webkit-line-clamp: unset !important; overflow: visible !important; }
+.boton--inactivo { opacity: .5; pointer-events: none; }
+.sin-scroll { overflow: hidden; }
+
+.carrito-flotante {
+  position: fixed; right: 20px; bottom: 92px; z-index: 20;
+  width: 60px; height: 60px; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--morado); color: #fff; display: none; align-items: center; justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .22);
+}
+.carrito-flotante--visible { display: flex; }
+.carrito-flotante--salto { animation: salto .4s ease; }
+@keyframes salto { 40% { transform: scale(1.18); } }
+.carrito-flotante__num {
+  position: absolute; top: -4px; right: -4px; min-width: 24px; height: 24px; padding: 0 6px;
+  border-radius: 999px; background: #F3E3A6; color: var(--morado-osc); font: 800 13px/24px "Nunito Sans", sans-serif;
+  border: 2px solid #fff;
+}
+.carrito-aviso {
+  position: fixed; left: 50%; bottom: 24px; z-index: 40; transform: translate(-50%, 20px);
+  background: var(--morado-osc); color: #fff; padding: 12px 18px; border-radius: 999px;
+  font-weight: 700; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s;
+  max-width: calc(100% - 32px); text-align: center;
+}
+.carrito-aviso--visible { opacity: 1; transform: translate(-50%, 0); }
+.carrito-fondo { position: fixed; inset: 0; z-index: 50; background: rgba(43, 34, 48, .45); display: flex; justify-content: flex-end; }
+.carrito-fondo[hidden] { display: none; }
+.carrito {
+  width: min(420px, 100%); height: 100%; background: var(--crema); display: flex; flex-direction: column;
+  box-shadow: -12px 0 30px rgba(0, 0, 0, .15);
+}
+.carrito__cabecera { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; border-bottom: 1px solid var(--borde); background: #fff; }
+.carrito__cabecera h2 { font-size: 24px; }
+.carrito__cerrar { width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--borde-2); background: #fff; color: var(--morado-osc); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.carrito__lista { flex: 1; overflow-y: auto; padding: 12px 20px; display: flex; flex-direction: column; gap: 10px; }
+.carrito__vacio { color: var(--texto-2); padding: 24px 0; text-align: center; line-height: 1.6; }
+.carrito__item { display: flex; gap: 12px; align-items: center; background: #fff; border: 1px solid var(--borde); border-radius: 16px; padding: 10px; }
+.carrito__item img, .carrito__sin-foto { width: 64px; height: 64px; border-radius: 12px; object-fit: cover; background: var(--fondo-foto); flex: none; }
+.carrito__info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.carrito__info strong { font-size: 15px; }
+.carrito__info > span { font-size: 13px; color: var(--texto-2); }
+.carrito__cant { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+.carrito__cant button { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--borde-2); background: #fff; color: var(--morado-osc); font: 800 18px/1 "Nunito Sans", sans-serif; cursor: pointer; }
+.carrito__cant span { min-width: 20px; text-align: center; font-weight: 800; }
+.carrito__quitar { width: 40px; height: 40px; border: 0; background: none; color: #8A7B90; cursor: pointer; border-radius: 10px; flex: none; }
+.carrito__quitar:hover { background: var(--lila); color: var(--morado-osc); }
+.carrito__pie { padding: 14px 20px 20px; border-top: 1px solid var(--borde); background: #fff; display: flex; flex-direction: column; gap: 8px; }
+.carrito__nota-label { font-weight: 700; font-size: 14px; }
+.carrito__nota { width: 100%; border: 1px solid #CFC2D6; border-radius: 12px; padding: 10px 12px; font: 15px "Nunito Sans", sans-serif; resize: vertical; }
+.carrito__vaciar { align-self: center; border: 0; background: none; color: #6B5F70; font: 700 14px "Nunito Sans", sans-serif; text-decoration: underline; cursor: pointer; padding: 6px; }
+
 /* ===== Celular: versión compacta (no afecta la computadora) ===== */
 .solo-movil, .menu-btn, .pestanas { display: none; }
 @media (max-width: 760px) {
@@ -348,4 +402,8 @@ details p { margin-top: 10px; color: var(--texto-2); line-height: 1.6; }
   .resumen { padding: 12px 14px; font-size: 14px; }
   .exclusivo { padding: 14px; }
   .exclusivo span { font-size: 14px; }
+
+  /* Carrito y Ver más */
+  .carrito-flotante { right: 16px; bottom: 84px; width: 54px; height: 54px; }
+  .tarjeta__mas { margin-top: -2px; }
 }
