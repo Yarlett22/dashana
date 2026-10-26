@@ -241,7 +241,7 @@ details p { margin-top: 10px; color: var(--texto-2); line-height: 1.6; }
 .colores--bloqueados .color { opacity: .3; cursor: not-allowed; }
 
 /* ===== Celular: versión compacta (no afecta la computadora) ===== */
-.solo-movil, .menu-btn, .pestanas, .paso__siguiente { display: none; }
+.solo-movil, .menu-btn, .pestanas { display: none; }
 @media (max-width: 760px) {
   .solo-pc { display: none; }
   .solo-movil { display: inline; }
@@ -345,10 +345,6 @@ details p { margin-top: 10px; color: var(--texto-2); line-height: 1.6; }
   .config .chips { flex-wrap: nowrap; overflow-x: auto; margin-inline: -14px; padding: 2px 14px 4px; }
   .config .chip { min-height: 40px; padding: 0 14px; font-size: 14px; }
   .config .colores { gap: 10px; }
-  .paso__siguiente {
-    display: block; align-self: flex-end; border: 0; background: none; padding: 6px 0;
-    color: var(--morado); font: 800 14px "Nunito Sans", sans-serif; cursor: pointer;
-  }
   .resumen { padding: 12px 14px; font-size: 14px; }
   .exclusivo { padding: 14px; }
   .exclusivo span { font-size: 14px; }

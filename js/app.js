@@ -303,13 +303,6 @@
     var pasos = Array.prototype.slice.call(document.querySelectorAll(".config__opciones .paso[data-paso]"));
     if (!pestanas.length) return;
     var nombres = pestanas.map(function (b) { return b.textContent; });
-    pasos.forEach(function (paso, i) {
-      if (i < pasos.length - 1) {
-        var sig = el("button", { type: "button", class: "paso__siguiente" }, "Siguiente: " + esc(nombres[i + 1]) + " →");
-        sig.addEventListener("click", function () { mostrar(i + 1, true); });
-        paso.appendChild(sig);
-      }
-    });
     function mostrar(n, enfocar) {
       pestanas.forEach(function (b, i) {
         var activo = i === n;
