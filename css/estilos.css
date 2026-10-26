@@ -242,7 +242,7 @@ details p { margin-top: 10px; color: var(--texto-2); line-height: 1.6; }
 
 /* ===== Carrito de pedido ===== */
 .tarjeta .boton svg, .boton--grande svg { flex: none; }
-.tarjeta__mas { align-self: flex-start; border: 0; background: none; padding: 2px 0; color: var(--morado); font: 800 13px "Nunito Sans", sans-serif; cursor: pointer; text-decoration: underline; }
+.tarjeta--recortada { cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .tarjeta--abierta .tarjeta__desc { display: block !important; max-height: none !important; -webkit-line-clamp: unset !important; overflow: visible !important; }
 .boton--inactivo { opacity: .5; pointer-events: none; }
 .sin-scroll { overflow: hidden; }
@@ -405,5 +405,4 @@ details p { margin-top: 10px; color: var(--texto-2); line-height: 1.6; }
 
   /* Carrito y Ver más */
   .carrito-flotante { right: 16px; bottom: 84px; width: 54px; height: 54px; }
-  .tarjeta__mas { margin-top: -2px; }
 }

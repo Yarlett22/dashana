@@ -20,7 +20,6 @@
   function botonAgregar(clase, nombre, foto) {
     return '<button type="button" class="boton ' + clase + '" data-agregar data-nombre="' + esc(nombre) + '" data-foto="' + esc(foto || "") + '">' + iconoMas + '<span>Agregar<span class="solo-pc"> al pedido</span></span></button>';
   }
-  var verMas = '<button type="button" class="tarjeta__mas" hidden>Ver más</button>';
 
   // ---- Menú en celular ----
   var menuBtn = document.querySelector(".menu-btn"), header = document.querySelector(".header");
@@ -56,7 +55,7 @@
         : '<div class="tarjeta__foto tarjeta__foto--ilustracion">' + jabonSVG(p.color || "#C9B3E0") + "</div>";
       lista.appendChild(el("article", { class: "tarjeta" },
         foto + '<div class="tarjeta__cuerpo"><span class="tarjeta__cat">' + esc(p.categoria) + "</span><h3>" + esc(p.nombre) +
-        '</h3><p class="tarjeta__desc">' + esc(p.descripcion) + '</p>' + verMas + botonAgregar("boton--verde", p.nombre, p.foto) + '</div>'));
+        '</h3><p class="tarjeta__desc">' + esc(p.descripcion) + '</p>' + botonAgregar("boton--verde", p.nombre, p.foto) + '</div>'));
     });
   }
   categorias.forEach(function (c) {
@@ -76,7 +75,7 @@
     listaFig.appendChild(el("article", { class: "tarjeta" },
       '<div class="tarjeta__foto"><img src="' + esc(f.foto) + '" alt="Jabón artesanal con forma de ' + esc(f.nombre.toLowerCase()) + '" loading="lazy" width="900" height="900"></div>' +
       '<div class="tarjeta__cuerpo"><h3>' + esc(f.nombre) + '</h3><p class="tarjeta__desc">' + esc(f.descripcion) +
-      '</p>' + verMas + botonAgregar("boton--morado", f.nombre, f.foto) + '</div>'));
+      '</p>' + botonAgregar("boton--morado", f.nombre, f.foto) + '</div>'));
   });
 
   // ---- Navidad ----
@@ -85,7 +84,7 @@
     listaNav.appendChild(el("article", { class: "tarjeta" },
       '<div class="tarjeta__foto"><img src="' + esc(f.foto) + '" alt="Jabón navideño ' + esc(f.nombre.toLowerCase()) + '" loading="lazy" width="900" height="900"></div>' +
       '<div class="tarjeta__cuerpo"><h3>' + esc(f.nombre) + '</h3><p class="tarjeta__desc">' + esc(f.descripcion) +
-      '</p>' + verMas + botonAgregar("boton--morado", f.nombre, f.foto) + '</div>'));
+      '</p>' + botonAgregar("boton--morado", f.nombre, f.foto) + '</div>'));
   });
 
   // ---- Ocasiones ----
@@ -327,21 +326,34 @@
     pestanas.forEach(function (b, i) { b.addEventListener("click", function () { mostrar(i, false); }); });
     mostrar(0, false);
   })();
-  // ---- "Ver más" en descripciones recortadas (celular) ----
+  // ---- Tocar la tarjeta para leer la descripción completa (celular) ----
   function revisarVerMas() {
     document.querySelectorAll(".tarjeta").forEach(function (t) {
-      var d = t.querySelector(".tarjeta__desc"), b = t.querySelector(".tarjeta__mas");
-      if (!d || !b) return;
-      if (t.classList.contains("tarjeta--abierta")) { b.hidden = false; return; }
-      b.hidden = d.scrollHeight <= d.clientHeight + 2;
+      var d = t.querySelector(".tarjeta__desc");
+      if (!d) return;
+      var recortada = t.classList.contains("tarjeta--abierta") || d.scrollHeight > d.clientHeight + 2;
+      t.classList.toggle("tarjeta--recortada", recortada);
+      if (recortada) {
+        t.setAttribute("tabindex", "0");
+        t.setAttribute("aria-expanded", t.classList.contains("tarjeta--abierta") ? "true" : "false");
+      } else {
+        t.removeAttribute("tabindex"); t.removeAttribute("aria-expanded");
+      }
     });
   }
+  function alternar(t) {
+    var abierta = t.classList.toggle("tarjeta--abierta");
+    t.setAttribute("aria-expanded", abierta ? "true" : "false");
+  }
   document.addEventListener("click", function (e) {
-    var b = e.target.closest(".tarjeta__mas");
-    if (!b) return;
-    var t = b.closest(".tarjeta"), abierta = t.classList.toggle("tarjeta--abierta");
-    b.textContent = abierta ? "Ver menos" : "Ver más";
-    b.setAttribute("aria-expanded", abierta ? "true" : "false");
+    var t = e.target.closest(".tarjeta--recortada");
+    if (!t || e.target.closest("button, a")) return;
+    alternar(t);
+  });
+  document.addEventListener("keydown", function (e) {
+    if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("tarjeta--recortada")) {
+      e.preventDefault(); alternar(e.target);
+    }
   });
   window.addEventListener("resize", revisarVerMas);
   window.addEventListener("load", revisarVerMas);
