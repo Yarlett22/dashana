@@ -17,8 +17,14 @@
   var iconoHoja = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2F6B3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>';
 
   var iconoMas = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
-  function botonAgregar(clase, nombre, foto) {
-    return '<button type="button" class="boton ' + clase + '" data-agregar data-nombre="' + esc(nombre) + '" data-foto="' + esc(foto || "") + '">' + iconoMas + '<span>Agregar<span class="solo-pc"> al pedido</span></span></button>';
+  function soles(n) { return "S/ " + (Math.round(n * 100) / 100).toFixed(n % 1 ? 2 : 0); }
+  function botonAgregar(clase, p) {
+    return '<button type="button" class="boton ' + clase + '" data-agregar data-nombre="' + esc(p.nombre) + '" data-foto="' + esc(p.foto || "") +
+      '" data-precio="' + (p.precio || "") + '">' + iconoMas + '<span>Agregar<span class="solo-pc"> al pedido</span></span></button>';
+  }
+  function precioPeso(p) {
+    if (!p.precio) return "";
+    return '<p class="tarjeta__precio"><strong>' + soles(p.precio) + '</strong>' + (p.peso ? '<span>' + p.peso + ' g</span>' : '') + '</p>';
   }
 
   // ---- Menú en celular ----
@@ -55,7 +61,7 @@
         : '<div class="tarjeta__foto tarjeta__foto--ilustracion">' + jabonSVG(p.color || "#C9B3E0") + "</div>";
       lista.appendChild(el("article", { class: "tarjeta" },
         foto + '<div class="tarjeta__cuerpo"><span class="tarjeta__cat">' + esc(p.categoria) + "</span><h3>" + esc(p.nombre) +
-        '</h3><p class="tarjeta__desc">' + esc(p.descripcion) + '</p>' + botonAgregar("boton--verde", p.nombre, p.foto) + '</div>'));
+        '</h3><p class="tarjeta__desc">' + esc(p.descripcion) + '</p>' + precioPeso(p) + botonAgregar("boton--verde", p) + '</div>'));
     });
   }
   categorias.forEach(function (c) {
@@ -75,7 +81,7 @@
     listaFig.appendChild(el("article", { class: "tarjeta" },
       '<div class="tarjeta__foto"><img src="' + esc(f.foto) + '" alt="Jabón artesanal con forma de ' + esc(f.nombre.toLowerCase()) + '" loading="lazy" width="900" height="900"></div>' +
       '<div class="tarjeta__cuerpo"><h3>' + esc(f.nombre) + '</h3><p class="tarjeta__desc">' + esc(f.descripcion) +
-      '</p>' + botonAgregar("boton--morado", f.nombre, f.foto) + '</div>'));
+      '</p>' + precioPeso(f) + botonAgregar("boton--morado", f) + '</div>'));
   });
 
   // ---- Navidad ----
@@ -84,7 +90,7 @@
     listaNav.appendChild(el("article", { class: "tarjeta" },
       '<div class="tarjeta__foto"><img src="' + esc(f.foto) + '" alt="Jabón navideño ' + esc(f.nombre.toLowerCase()) + '" loading="lazy" width="900" height="900"></div>' +
       '<div class="tarjeta__cuerpo"><h3>' + esc(f.nombre) + '</h3><p class="tarjeta__desc">' + esc(f.descripcion) +
-      '</p>' + botonAgregar("boton--morado", f.nombre, f.foto) + '</div>'));
+      '</p>' + precioPeso(f) + botonAgregar("boton--morado", f) + '</div>'));
   });
 
   // ---- Ocasiones ----
@@ -275,13 +281,15 @@
       }));
     }
 
-    var resumen = nombreForma + " · " + nombreColor + " · " + tipo.nombre + " · Aroma " + estado.aroma + " · " + estado.cantidad + " unidad(es)";
+    var precioUnit = figura && figura.precio ? figura.precio : (figura ? D.precioPersonalizado.figura : D.precioPersonalizado.clasica);
+    var resumen = nombreForma + " · " + nombreColor + " · " + tipo.nombre + " · Aroma " + estado.aroma + " · " + estado.cantidad + " unidad(es) × " + soles(precioUnit) + " = " + soles(precioUnit * estado.cantidad);
     document.getElementById("resumen").textContent = resumen;
     estado.pedido = {
       nombre: "Personalizado: " + nombreForma,
       detalle: nombreColor + " · " + tipo.nombre + " · Aroma " + estado.aroma,
       foto: figura ? figura.foto : "",
       color: hexFinal,
+      precio: precioUnit,
       cantidad: estado.cantidad
     };
     window.__dashanaJabon = { forma: estado.forma.slice(7), color: hexFinal, tipo: estado.tipo };

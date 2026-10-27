@@ -8,6 +8,11 @@
   function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(items)); } catch (e) {} }
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function total() { return items.reduce(function (t, i) { return t + i.cantidad; }, 0); }
+  function soles(n) { return "S/ " + (Math.round(n * 100) / 100).toFixed(2); }
+  function importe() { return items.reduce(function (t, i) { return t + (i.precio || 0) * i.cantidad; }, 0); }
+  function descuento(cant) {
+    var d = 0; (D.descuentos || []).forEach(function (t) { if (cant >= t.desde) d = t.porcentaje; }); return d;
+  }
 
   // ---- Elementos ----
   var boton = document.createElement("button");
@@ -26,6 +31,7 @@
     '    <button type="button" class="carrito__cerrar" aria-label="Cerrar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>' +
     '  <div class="carrito__lista"></div>' +
     '  <div class="carrito__pie">' +
+    '    <div class="carrito__totales"></div>' +
     '    <label class="carrito__nota-label" for="carrito-nota">Comentarios (opcional)</label>' +
     '    <textarea id="carrito-nota" class="carrito__nota" rows="2" placeholder="Fecha del evento, entrega, colores…"></textarea>' +
     '    <a class="boton boton--verde boton--grande carrito__enviar" href="#" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Enviar pedido por WhatsApp</a>' +
@@ -47,10 +53,17 @@
   function mensaje() {
     var m = "Hola Dashana, quiero hacer este pedido:\n";
     items.forEach(function (i, n) {
-      m += "\n" + (n + 1) + ". " + i.nombre + (i.detalle ? " (" + i.detalle + ")" : "") + " × " + i.cantidad;
+      m += "\n" + (n + 1) + ". " + i.nombre + (i.detalle ? " (" + i.detalle + ")" : "") + " × " + i.cantidad +
+        (i.precio ? " = " + soles(i.precio * i.cantidad) : "");
     });
+    var sub = importe(), d = descuento(total());
+    if (sub) {
+      m += "\n\nSubtotal: " + soles(sub);
+      if (d) m += "\nDescuento por cantidad (" + Math.round(d * 100) + " %): −" + soles(sub * d);
+      m += "\nTotal estimado: " + soles(sub * (1 - d)) + " (sin delivery)";
+    }
     if (nota.value.trim()) m += "\n\nComentarios: " + nota.value.trim();
-    m += "\n\n¿Me confirman disponibilidad y precio? Gracias.";
+    m += "\n\n¿Me confirman disponibilidad? Gracias.";
     return "https://wa.me/" + D.whatsapp + "?text=" + encodeURIComponent(m);
   }
 
@@ -68,6 +81,7 @@
         return '<div class="carrito__item">' +
           (i.foto ? '<img src="' + esc(i.foto) + '" alt="" width="64" height="64">' : '<span class="carrito__sin-foto" aria-hidden="true"' + (i.color ? ' style="background:' + esc(i.color) + '"' : '') + '></span>') +
           '<div class="carrito__info"><strong>' + esc(i.nombre) + '</strong>' + (i.detalle ? '<span>' + esc(i.detalle) + '</span>' : '') +
+          (i.precio ? '<span class="carrito__precio">' + soles(i.precio) + ' c/u · <b>' + soles(i.precio * i.cantidad) + '</b></span>' : '') +
           '<div class="carrito__cant">' +
           '<button type="button" data-accion="menos" data-n="' + n + '" aria-label="Quitar uno de ' + esc(i.nombre) + '">−</button>' +
           '<span>' + i.cantidad + '</span>' +
@@ -81,6 +95,11 @@
       enviar.classList.remove("boton--inactivo");
     }
     enviar.href = items.length ? mensaje() : "#";
+    var tot = fondo.querySelector(".carrito__totales"), sub = importe(), d = descuento(total());
+    tot.innerHTML = sub ? ('<div><span>Subtotal (' + total() + ' jabones)</span><span>' + soles(sub) + '</span></div>' +
+      (d ? '<div class="carrito__desc"><span>Descuento ' + Math.round(d * 100) + ' %</span><span>−' + soles(sub * d) + '</span></div>' : '') +
+      '<div class="carrito__total"><span>Total estimado</span><span>' + soles(sub * (1 - d)) + '</span></div>' +
+      '<small>Delivery no incluido: se coordina por WhatsApp.</small>') : '';
   }
 
   function abrir() { fondo.hidden = false; document.body.classList.add("sin-scroll"); fondo.querySelector(".carrito__cerrar").focus(); }
@@ -97,8 +116,8 @@
   function agregar(item) {
     var cant = Math.max(1, parseInt(item.cantidad, 10) || 1);
     var existente = items.filter(function (i) { return i.nombre === item.nombre && (i.detalle || "") === (item.detalle || ""); })[0];
-    if (existente) existente.cantidad += cant;
-    else items.push({ nombre: item.nombre, detalle: item.detalle || "", foto: item.foto || "", color: item.color || "", cantidad: cant });
+    if (existente) { existente.cantidad += cant; if (item.precio) existente.precio = +item.precio; }
+    else items.push({ nombre: item.nombre, detalle: item.detalle || "", foto: item.foto || "", color: item.color || "", precio: +item.precio || 0, cantidad: cant });
     guardar(); pintar();
     avisar("✓ " + item.nombre + " agregado a tu pedido");
     boton.classList.remove("carrito-flotante--salto"); void boton.offsetWidth; boton.classList.add("carrito-flotante--salto");
@@ -126,7 +145,7 @@
     var b = e.target.closest("[data-agregar]");
     if (!b) return;
     e.preventDefault();
-    agregar({ nombre: b.dataset.nombre, foto: b.dataset.foto, detalle: b.dataset.detalle, cantidad: 1 });
+    agregar({ nombre: b.dataset.nombre, foto: b.dataset.foto, detalle: b.dataset.detalle, precio: b.dataset.precio, cantidad: 1 });
     var original = b.innerHTML;
     b.innerHTML = "✓ Agregado";
     b.disabled = true;
