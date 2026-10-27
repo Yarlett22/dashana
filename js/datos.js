@@ -33,12 +33,12 @@ window.DATOS = {
       descripcion: "Con su coronita de flores, perfecta para primeras comuniones." },
     { nombre: "Conejita", precio: 12, peso: 50, foto: "img/figuras/conejita.webp", repintar: true,
       descripcion: "Con su lacito y vestido, se roba todas las miradas." },
-    { nombre: "Elefantita", precio: 12, peso: 50, foto: "img/figuras/elefantita.webp",
+    { nombre: "Elefantita", precio: 10, peso: 50, foto: "img/figuras/elefantita.webp",
       descripcion: "Dulce y brillante, la favorita de los baby showers." },
     { nombre: "Flor con corazón", precio: 18, peso: 100, foto: "img/figuras/flor-corazon.webp", repintar: true,
       proteger: "img/figuras/flor-corazon-fijo.png", // corazón y base se quedan blancos; solo cambian los pétalos
       descripcion: "Un detalle lleno de amor para mamá, bodas o aniversarios." },
-    { nombre: "Osito en tarro de miel", precio: 10, peso: 30, foto: "img/figuras/osito-miel.webp", repintar: true,
+    { nombre: "Osito en tarro de miel", precio: 8, peso: 30, foto: "img/figuras/osito-miel.webp", repintar: true,
       descripcion: "Un osito asomándose de su tarro de miel. Imposible no sonreír." }
   ],
 
