@@ -123,10 +123,12 @@ window.DATOS = {
     { nombre: "Crema", hex: "#EFE3C8" }
   ],
   // Moldes extra que también se ofrecen en el configurador (además de figuras y Navidad)
+  // producto: nombre del jabón de "cuidado" del que sale este molde; toma su mismo precio.
   moldesExtra: [
-    { nombre: "Rosa", foto: "img/cuidado/rosas-config.webp", repintar: true, pintar: "img/cuidado/rosas-zona.png", contraste: 0.6 },
-    { nombre: "Flor de lavanda", foto: "img/cuidado/lavanda.webp", repintar: true },
-    { nombre: "Hoja", foto: "img/cuidado/hoja-config.webp", repintar: true, pintar: "img/cuidado/hoja-zona.png", contraste: 1.6 } // la escarcha dorada no se repinta
+    { nombre: "Sandía masajeador", producto: "Sandía masajeador", foto: "img/cuidado/sandia-config.webp", repintar: true, pintar: "img/cuidado/sandia-zona.png", contraste: 1.0 },
+    { nombre: "Rosa", producto: "Rosas", foto: "img/cuidado/rosas-config.webp", repintar: true, pintar: "img/cuidado/rosas-zona.png", contraste: 0.6 },
+    { nombre: "Flor de lavanda", producto: "Lavanda relajante", foto: "img/cuidado/lavanda.webp", repintar: true },
+    { nombre: "Hoja", producto: "Carbón activado", foto: "img/cuidado/hoja-config.webp", repintar: true, pintar: "img/cuidado/hoja-zona.png", contraste: 1.6 } // la escarcha dorada no se repinta
   ],
   // colorFijo: el ingrediente define el color; el cliente no puede elegir otro
   tipos: [

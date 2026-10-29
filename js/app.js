@@ -223,6 +223,16 @@
     }, zona);
   }
 
+  // Precio de un molde: el suyo, el del jabón de "cuidado" del que sale, o el de personalizado
+  function precioDeMolde(f) {
+    if (!f) return D.precioPersonalizado.clasica;
+    if (f.precio) return f.precio;
+    if (f.producto) {
+      var base = D.cuidado.filter(function (p) { return p.nombre === f.producto; })[0];
+      if (base && base.precio) return base.precio;
+    }
+    return D.precioPersonalizado.figura;
+  }
   function actualizar() {
     var esFigura = estado.forma.indexOf("figura:") === 0;
     var nombreForma, figura;
@@ -281,7 +291,7 @@
       }));
     }
 
-    var precioUnit = figura && figura.precio ? figura.precio : (figura ? D.precioPersonalizado.figura : D.precioPersonalizado.clasica);
+    var precioUnit = precioDeMolde(figura);
     var resumen = nombreForma + " · " + nombreColor + " · " + tipo.nombre + " · Aroma " + estado.aroma + " · " + estado.cantidad + " unidad(es) × " + soles(precioUnit) + " = " + soles(precioUnit * estado.cantidad);
     document.getElementById("resumen").textContent = resumen;
     estado.pedido = {
