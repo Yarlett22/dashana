@@ -11,7 +11,7 @@ window.DATOS = {
   // Número de WhatsApp (con código de país 51, sin espacios ni +)
   whatsapp: "51965231034",
 
-  // Precios en soles (precio) y peso en gramos (peso) de cada jabón.
+  // Precios en soles (precio), peso en gramos (peso) y, si se conocen, medidas ("ancho × alto cm").
   // Jabón personalizado: precio según su forma.
   precioPersonalizado: { clasica: 15, figura: 18 },
   // Descuento por cantidad total del pedido (porcentaje en decimales: 0.02 = 2 %)
@@ -25,22 +25,22 @@ window.DATOS = {
   // Si un color no tiene foto, se muestra la foto principal.
   // repintar: true -> la página pinta automáticamente la foto en el color elegido.
   figuras: [
-    { nombre: "Angelito con alas", precio: 18, peso: 100, foto: "img/figuras/angelito-alas.webp", repintar: true,
+    { nombre: "Angelito con alas", precio: 18, peso: 80, foto: "img/figuras/angelito-alas.webp", repintar: true,
       descripcion: "Un angelito que descansa entre sus alas. Ideal para bautizos y comuniones." },
-    { nombre: "Angelito en oración", precio: 18, peso: 100, foto: "img/figuras/angelito-rezando.webp", repintar: true,
+    { nombre: "Angelito en oración", precio: 18, peso: 80, foto: "img/figuras/angelito-rezando.webp", repintar: true,
       descripcion: "Tierno y delicado, un recuerdo lleno de paz." },
-    { nombre: "Angelita con flores", precio: 18, peso: 100, foto: "img/figuras/angelita-flores.webp", repintar: true,
+    { nombre: "Angelita con flores", precio: 18, peso: 80, foto: "img/figuras/angelita-flores.webp", repintar: true,
       descripcion: "Con su coronita de flores, perfecta para primeras comuniones." },
-    { nombre: "Conejita", precio: 12, peso: 50, foto: "img/figuras/conejita.webp", repintar: true,
+    { nombre: "Conejita", precio: 12, peso: 30, foto: "img/figuras/conejita.webp", repintar: true,
       descripcion: "Con su lacito y vestido, se roba todas las miradas." },
     { nombre: "Elefantita", precio: 10, peso: 50, foto: "img/figuras/elefantita.webp", repintar: true,
       descripcion: "Dulce y tierna, la favorita de los baby showers." },
-    { nombre: "Flor con corazón", precio: 18, peso: 100, foto: "img/figuras/flor-corazon.webp", repintar: true,
+    { nombre: "Flor con corazón", precio: 18, peso: 80, foto: "img/figuras/flor-corazon.webp", repintar: true,
       proteger: "img/figuras/flor-corazon-fijo.png", // corazón y base se quedan blancos; solo cambian los pétalos
       descripcion: "Un detalle lleno de amor para mamá, bodas o aniversarios." },
     { nombre: "Osito en tarro de miel", precio: 8, peso: 30, foto: "img/figuras/osito-miel.webp", repintar: true,
       descripcion: "Un osito asomándose de su tarro de miel. Imposible no sonreír." },
-    { nombre: "Osito aviador", precio: 8, peso: 30, foto: "img/figuras/osito-aviador.webp", repintar: true,
+    { nombre: "Osito aviador", precio: 8, peso: 30, medidas: "3,2 × 5,6 cm", foto: "img/figuras/osito-aviador.webp", repintar: true,
       descripcion: "Con su gorrito de piloto y bufanda, listo para despegar. Ideal para baby showers y cumpleaños." },
     { nombre: "Pequeña graduada", precio: 5, peso: 15, foto: "img/figuras/graduada.webp", repintar: true,
       descripcion: "Con birrete y ramito de rosas. El recuerdo perfecto para celebrar una graduación." },
@@ -51,11 +51,11 @@ window.DATOS = {
   // ---------- Cuidado natural para tu piel ----------
   // categoria: "Aromáticos", "Cuidado de la piel" o "Relajantes"
   cuidado: [
-    { nombre: "Sandía masajeador", precio: 15, peso: 100, categoria: "Cuidado de la piel", foto: "img/cuidado/sandia-masajeador.webp",
+    { nombre: "Sandía masajeador", precio: 15, peso: 130, categoria: "Cuidado de la piel", foto: "img/cuidado/sandia-masajeador.webp",
       descripcion: "Masajea tu piel mientras te bañas. Con semillas de chía que exfolian suavemente." },
-    { nombre: "Avena y miel", precio: 15, peso: 100, categoria: "Cuidado de la piel", foto: "img/cuidado/miel-abejita.webp",
+    { nombre: "Avena y miel", precio: 15, peso: 120, categoria: "Cuidado de la piel", foto: "img/cuidado/miel-abejita.webp",
       descripcion: "Con avena y el dulzor de la miel. Suave para piel sensible, con exfoliación delicada que la deja hidratada." },
-    { nombre: "Flores de cerezo", precio: 15, peso: 100, categoria: "Aromáticos", foto: "img/cuidado/flores-cerezo.webp",
+    { nombre: "Flores de cerezo", precio: 15, peso: 120, categoria: "Aromáticos", foto: "img/cuidado/flores-cerezo.webp",
       descripcion: "Delicadas flores con destellos dorados y un aroma floral que enamora." },
     { nombre: "Romero", precio: 15, peso: 100, categoria: "Cuidado de la piel", foto: "img/cuidado/romero.webp",
       descripcion: "Con romero, de aroma herbal fresco. Deja tu piel limpia y con una agradable sensación de frescura." },

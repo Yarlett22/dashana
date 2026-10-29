@@ -24,7 +24,7 @@
   }
   function precioPeso(p) {
     if (!p.precio) return "";
-    return '<p class="tarjeta__precio"><strong>' + soles(p.precio) + '</strong>' + (p.peso ? '<span>' + p.peso + ' g</span>' : '') + '</p>';
+    return '<p class="tarjeta__precio"><strong>' + soles(p.precio) + '</strong>' + (p.peso ? '<span>' + p.peso + ' g' + (p.medidas ? ' · ' + esc(p.medidas) : '') + '</span>' : '') + '</p>';
   }
 
   // ---- Menú en celular ----
