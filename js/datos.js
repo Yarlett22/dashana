@@ -39,7 +39,11 @@ window.DATOS = {
       proteger: "img/figuras/flor-corazon-fijo.png", // corazón y base se quedan blancos; solo cambian los pétalos
       descripcion: "Un detalle lleno de amor para mamá, bodas o aniversarios." },
     { nombre: "Osito en tarro de miel", precio: 8, peso: 30, foto: "img/figuras/osito-miel.webp", repintar: true,
-      descripcion: "Un osito asomándose de su tarro de miel. Imposible no sonreír." }
+      descripcion: "Un osito asomándose de su tarro de miel. Imposible no sonreír." },
+    { nombre: "Osito aviador", precio: 18, peso: 100, foto: "img/figuras/osito-aviador.webp", repintar: true,
+      descripcion: "Con su gorrito de piloto y bufanda, listo para despegar. Ideal para baby showers y cumpleaños." },
+    { nombre: "Graduada", precio: 18, peso: 100, foto: "img/figuras/graduada.webp", repintar: true,
+      descripcion: "Con birrete y ramito de rosas. El recuerdo perfecto para celebrar una graduación." }
   ],
 
   // ---------- Cuidado natural para tu piel ----------
