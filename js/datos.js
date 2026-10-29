@@ -40,9 +40,9 @@ window.DATOS = {
       descripcion: "Un detalle lleno de amor para mamá, bodas o aniversarios." },
     { nombre: "Osito en tarro de miel", precio: 8, peso: 30, foto: "img/figuras/osito-miel.webp", repintar: true,
       descripcion: "Un osito asomándose de su tarro de miel. Imposible no sonreír." },
-    { nombre: "Osito aviador", precio: 18, peso: 100, foto: "img/figuras/osito-aviador.webp", repintar: true,
+    { nombre: "Osito aviador", precio: 10, peso: 30, foto: "img/figuras/osito-aviador.webp", repintar: true,
       descripcion: "Con su gorrito de piloto y bufanda, listo para despegar. Ideal para baby showers y cumpleaños." },
-    { nombre: "Graduada", precio: 18, peso: 100, foto: "img/figuras/graduada.webp", repintar: true,
+    { nombre: "Graduadita", precio: 8, peso: 15, foto: "img/figuras/graduada.webp", repintar: true,
       descripcion: "Con birrete y ramito de rosas. El recuerdo perfecto para celebrar una graduación." }
   ],
 
@@ -129,7 +129,7 @@ window.DATOS = {
   // Moldes extra que también se ofrecen en el configurador (además de figuras y Navidad)
   // producto: nombre del jabón de "cuidado" del que sale este molde; toma su mismo precio.
   moldesExtra: [
-    { nombre: "Sandía masajeador", producto: "Sandía masajeador", foto: "img/cuidado/sandia-config.webp", repintar: true, pintar: "img/cuidado/sandia-zona.png", contraste: 1.0 },
+    { nombre: "Masajeador spa", producto: "Sandía masajeador", foto: "img/cuidado/sandia-config.webp", repintar: true, pintar: "img/cuidado/sandia-zona.png", contraste: 1.0 },
     { nombre: "Rosa", producto: "Rosas", foto: "img/cuidado/rosas-config.webp", repintar: true, pintar: "img/cuidado/rosas-zona.png", contraste: 0.6 },
     { nombre: "Flor de lavanda", producto: "Lavanda relajante", foto: "img/cuidado/lavanda.webp", repintar: true },
     { nombre: "Hoja", producto: "Carbón activado", foto: "img/cuidado/hoja-config.webp", repintar: true, pintar: "img/cuidado/hoja-zona.png", contraste: 1.6 } // la escarcha dorada no se repinta
