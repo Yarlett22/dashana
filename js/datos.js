@@ -25,20 +25,20 @@ window.DATOS = {
   // Si un color no tiene foto, se muestra la foto principal.
   // repintar: true -> la página pinta automáticamente la foto en el color elegido.
   figuras: [
-    { nombre: "Angelito con alas", precio: 18, peso: 80, foto: "img/figuras/angelito-alas.webp", repintar: true,
+    { nombre: "Angelito con alas", precio: 18, peso: 80, medidas: "9 × 6 cm", foto: "img/figuras/angelito-alas.webp", repintar: true,
       descripcion: "Un angelito que descansa entre sus alas. Ideal para bautizos y comuniones." },
-    { nombre: "Angelito en oración", precio: 18, peso: 80, foto: "img/figuras/angelito-rezando.webp", repintar: true,
+    { nombre: "Angelito en oración", precio: 18, peso: 80, medidas: "5 × 7,8 cm", foto: "img/figuras/angelito-rezando.webp", repintar: true,
       descripcion: "Tierno y delicado, un recuerdo lleno de paz." },
-    { nombre: "Angelita con flores", precio: 18, peso: 80, foto: "img/figuras/angelita-flores.webp", repintar: true,
+    { nombre: "Angelita con flores", precio: 18, peso: 80, medidas: "4 × 10 cm", foto: "img/figuras/angelita-flores.webp", repintar: true,
       descripcion: "Con su coronita de flores, perfecta para primeras comuniones." },
-    { nombre: "Conejita", precio: 12, peso: 30, foto: "img/figuras/conejita.webp", repintar: true,
+    { nombre: "Conejita", precio: 12, peso: 30, medidas: "4,5 × 5,5 cm", foto: "img/figuras/conejita.webp", repintar: true,
       descripcion: "Con su lacito y vestido, se roba todas las miradas." },
-    { nombre: "Elefantita", precio: 10, peso: 50, foto: "img/figuras/elefantita.webp", repintar: true,
+    { nombre: "Elefantita", precio: 10, peso: 30, medidas: "3 × 4,5 cm", foto: "img/figuras/elefantita.webp", repintar: true,
       descripcion: "Dulce y tierna, la favorita de los baby showers." },
-    { nombre: "Flor con corazón", precio: 18, peso: 80, foto: "img/figuras/flor-corazon.webp", repintar: true,
+    { nombre: "Flor con corazón", precio: 18, peso: 60, medidas: "6 × 2,5 cm", foto: "img/figuras/flor-corazon.webp", repintar: true,
       proteger: "img/figuras/flor-corazon-fijo.png", // corazón y base se quedan blancos; solo cambian los pétalos
       descripcion: "Un detalle lleno de amor para mamá, bodas o aniversarios." },
-    { nombre: "Osito en tarro de miel", precio: 8, peso: 30, foto: "img/figuras/osito-miel.webp", repintar: true,
+    { nombre: "Osito en tarro de miel", precio: 8, peso: 30, medidas: "3 × 4,5 cm", foto: "img/figuras/osito-miel.webp", repintar: true,
       descripcion: "Un osito asomándose de su tarro de miel. Imposible no sonreír." },
     { nombre: "Osito aviador", precio: 8, peso: 30, medidas: "3,2 × 5,6 cm", foto: "img/figuras/osito-aviador.webp", repintar: true,
       descripcion: "Con su gorrito de piloto y bufanda, listo para despegar. Ideal para baby showers y cumpleaños." },
@@ -51,11 +51,11 @@ window.DATOS = {
   // ---------- Cuidado natural para tu piel ----------
   // categoria: "Aromáticos", "Cuidado de la piel" o "Relajantes"
   cuidado: [
-    { nombre: "Sandía masajeador", precio: 15, peso: 130, categoria: "Cuidado de la piel", foto: "img/cuidado/sandia-masajeador.webp",
+    { nombre: "Sandía masajeador", precio: 15, peso: 130, medidas: "8,5 × 3,5 cm", categoria: "Cuidado de la piel", foto: "img/cuidado/sandia-masajeador.webp",
       descripcion: "Masajea tu piel mientras te bañas. Con semillas de chía que exfolian suavemente." },
-    { nombre: "Avena y miel", precio: 15, peso: 120, categoria: "Cuidado de la piel", foto: "img/cuidado/miel-abejita.webp",
+    { nombre: "Avena y miel", precio: 15, peso: 120, medidas: "7 × 3,5 cm", categoria: "Cuidado de la piel", foto: "img/cuidado/miel-abejita.webp",
       descripcion: "Con avena y el dulzor de la miel. Suave para piel sensible, con exfoliación delicada que la deja hidratada." },
-    { nombre: "Flores de cerezo", precio: 15, peso: 120, categoria: "Aromáticos", foto: "img/cuidado/flores-cerezo.webp",
+    { nombre: "Flores de cerezo", precio: 15, peso: 120, medidas: "6,5 × 3 cm", categoria: "Aromáticos", foto: "img/cuidado/flores-cerezo.webp",
       descripcion: "Delicadas flores con destellos dorados y un aroma floral que enamora." },
     { nombre: "Romero", precio: 15, peso: 100, categoria: "Cuidado de la piel", foto: "img/cuidado/romero.webp",
       descripcion: "Con romero, de aroma herbal fresco. Deja tu piel limpia y con una agradable sensación de frescura." },
@@ -79,13 +79,13 @@ window.DATOS = {
 
   // ---------- Colección Navidad ----------
   navidad: [
-    { nombre: "Arbolito Feliz Navidad", precio: 15, peso: 100, foto: "img/navidad/arbolito.webp", repintar: true,
+    { nombre: "Arbolito Feliz Navidad", precio: 15, peso: 80, medidas: "7 × 8 cm", foto: "img/navidad/arbolito.webp", repintar: true,
       proteger: "img/navidad/arbolito-dibujo.png", // la frase y la escarcha doradas no se repintan
       descripcion: "Jabón de glicerina con brillo dorado. Llena tu baño de espíritu navideño y es ideal como regalo." },
-    { nombre: "Galletita de jengibre", precio: 15, peso: 100, foto: "img/navidad/galleta-jengibre.webp", repintar: true,
+    { nombre: "Galletita de jengibre", precio: 15, peso: 70, medidas: "5,5 × 7,2 cm", foto: "img/navidad/galleta-jengibre.webp", repintar: true,
       proteger: "img/navidad/galleta-jengibre-dibujo.png", // el dibujo impreso no se repinta
       descripcion: "Jabón suave y colorido que hace del baño de los niños un momento divertido estas fiestas." },
-    { nombre: "Sagrada Familia", precio: 15, peso: 100, foto: "img/navidad/sagrada-familia.webp", repintar: true,
+    { nombre: "Sagrada Familia", precio: 15, peso: 80, medidas: "6 × 7,5 cm", foto: "img/navidad/sagrada-familia.webp", repintar: true,
       descripcion: "Jabón artesanal con destellos dorados. Un regalo con significado para compartir en familia." }
   ],
 
