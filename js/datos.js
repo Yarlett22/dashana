@@ -33,7 +33,7 @@ window.DATOS = {
       descripcion: "Con su coronita de flores, perfecta para primeras comuniones." },
     { nombre: "Conejita", precio: 12, peso: 30, medidas: "4,5 × 5,5 cm", foto: "img/figuras/conejita.webp", repintar: true,
       descripcion: "Con su lacito y vestido, se roba todas las miradas." },
-    { nombre: "Elefantita", precio: 10, peso: 30, medidas: "3 × 4,5 cm", foto: "img/figuras/elefantita.webp", repintar: true,
+    { nombre: "Elefantita", precio: 8, peso: 30, medidas: "3 × 4,5 cm", foto: "img/figuras/elefantita.webp", repintar: true,
       descripcion: "Dulce y tierna, la favorita de los baby showers." },
     { nombre: "Flor con corazón", precio: 18, peso: 60, medidas: "6 × 2,5 cm", foto: "img/figuras/flor-corazon.webp", repintar: true,
       proteger: "img/figuras/flor-corazon-fijo.png", // corazón y base se quedan blancos; solo cambian los pétalos
