@@ -48,7 +48,7 @@ window.DATOS = {
       descripcion: "Con birrete y su diploma en mano. Un detalle para celebrar cada logro." },
     { nombre: "Racimo de uvas", precio: 40, peso: 300, medidas: "20 cm de largo", foto: "img/figuras/racimo-uvas.webp", repintar: true,
       pintar: "img/figuras/racimo-uvas-zona.png", contraste: 1.0,
-      descripcion: "Uvitas de glicerina unidas con cordón de yute para colgar en la ducha. Decora tu baño y cada uva se usa como un jabón." }
+      descripcion: "Cuélgalo en el caño y lávate las manos directo con las uvitas. Práctico para toda la familia, se seca rápido y decora tu baño o cocina." }
   ],
 
   // ---------- Cuidado natural para tu piel ----------
