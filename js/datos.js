@@ -45,7 +45,10 @@ window.DATOS = {
     { nombre: "Pequeña graduada", precio: 5, peso: 15, medidas: "2,5 × 5,5 cm", foto: "img/figuras/graduada.webp", repintar: true,
       descripcion: "Con birrete y ramito de rosas. El recuerdo perfecto para celebrar una graduación." },
     { nombre: "Pequeño graduado", precio: 5, peso: 15, medidas: "2,5 × 5,5 cm", foto: "img/figuras/graduado.webp", repintar: true,
-      descripcion: "Con birrete y su diploma en mano. Un detalle para celebrar cada logro." }
+      descripcion: "Con birrete y su diploma en mano. Un detalle para celebrar cada logro." },
+    { nombre: "Racimo de uvas", precio: 40, peso: 300, medidas: "20 cm de largo", foto: "img/figuras/racimo-uvas.webp", repintar: true,
+      pintar: "img/figuras/racimo-uvas-zona.png", contraste: 1.0,
+      descripcion: "Uvitas de glicerina unidas con cordón de yute para colgar en la ducha. Decora tu baño y cada uva se usa como un jabón." }
   ],
 
   // ---------- Cuidado natural para tu piel ----------
